@@ -1,0 +1,88 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon %}
+{% block title %}État de la collecte{% endblock %}
+{% block content %}
+<div class="page">
+  <header class="page__head">
+    <h1>État de la collecte</h1>
+    <p>Ce que la dernière collecte a récupéré, les sources qui posent problème et l'historique des passages. Le bouton « Actualiser » relance une collecte complète.</p>
+  </header>
+
+  {% if last %}
+  <section class="panel run-card run-card--{{ last.mood }}" aria-labelledby="last-title">
+    <div class="run-card__head">
+      <h2 id="last-title">Dernière collecte</h2>
+      <span class="badge badge--{{ last.mood }}">{{ last.status }}</span>
+    </div>
+    <p class="run-card__when">{{ last.date }}, en {{ last.duration }}.</p>
+    {% if last.error %}<p class="run-card__err">{{ icon("alert") }}<span>{{ last.error }}</span></p>{% endif %}
+    <dl class="kpis kpis--5">
+      <div><dt>Sources à jour</dt><dd>{{ info.sources_ok }}<small>/{{ info.sources_active }}</small></dd></div>
+      <div><dt>Articles en base</dt><dd>{{ info.articles }}</dd></div>
+      <div><dt>Événements</dt><dd>{{ info.events }}</dd></div>
+      <div><dt>Fiches en français</dt><dd>{{ briefs }}<small> · {{ briefs_share }} %</small></dd></div>
+      <div><dt>Signaux</dt><dd>{{ info.signals }}</dd></div>
+    </dl>
+  </section>
+  {% endif %}
+
+  <div class="collect-grid">
+    <section class="panel" aria-labelledby="src-title">
+      <h2 id="src-title">Sources{% if sources_bad %} <span class="badge badge--down">{{ sources_bad }} en erreur</span>{% endif %}</h2>
+      <div class="table-wrap">
+      <table class="table table--sources">
+        <thead><tr><th scope="col">Source</th><th scope="col">État</th><th scope="col" class="num">Nouveaux</th><th scope="col" class="num">En base</th><th scope="col">Dernière réussite</th></tr></thead>
+        <tbody>
+          {% for s in sources %}
+          <tr class="{{ 'is-off' if not s.enabled }}">
+            <th scope="row">{{ s.name }}<small>{{ s.family }}</small></th>
+            <td><span class="dot dot--{{ s.mood }}" aria-hidden="true"></span>{{ s.status }}{% if s.error[0] or s.error[1] %}<small class="src-err src-err--{{ s.mood }}">{% if s.error[0] %}<b>{{ s.error[0] }}.</b> {% endif %}<span>{{ s.error[1] }}</span></small>{% endif %}</td>
+            <td class="num">{{ s.new }}</td>
+            <td class="num">{{ s.stored }}</td>
+            <td>{{ s.success }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      <p class="table-note">Une source désactivée par <code>check</code> est revérifiée à chaque « Actualiser » et réactivée si elle répond de nouveau.</p>
+    </section>
+
+    <div class="collect-side">
+      {% if stages %}
+      <section class="panel" aria-labelledby="stages-title">
+        <h2 id="stages-title">Étapes de la dernière collecte</h2>
+        <ul class="stages">
+          {% for s in stages %}<li><span>{{ s.name }}</span><span class="stages__bar" aria-hidden="true"><span style="width: {{ s.share }}%"></span></span><b>{{ s.seconds }} s</b></li>{% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      <section class="panel" aria-labelledby="logs-title">
+        <h2 id="logs-title">Erreurs et avertissements</h2>
+        {% if logs %}
+        <ul class="logs">
+          {% for l in logs[:25] %}<li class="logs__{{ l.level }}"><b>{{ l.what }}</b>{% if l.source %} · {{ l.source }}{% endif %}<small>{{ l.message }}</small></li>{% endfor %}
+        </ul>
+        {% if logs|length > 25 %}<p class="table-note">{{ logs|length - 25 }} autres messages dans <a href="/docs">l'API</a> (<code>/api/pipeline/runs</code>).</p>{% endif %}
+        {% else %}<p class="empty">Aucun problème lors de la dernière collecte.</p>{% endif %}
+      </section>
+    </div>
+  </div>
+
+  <section class="panel" aria-labelledby="runs-title">
+    <h2 id="runs-title">Historique des collectes</h2>
+    <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th scope="col">Date</th><th scope="col">Résultat</th><th scope="col">Durée</th><th scope="col" class="num">Sources</th><th scope="col" class="num">Nouveaux articles</th><th scope="col" class="num">Événements</th></tr></thead>
+      <tbody>
+        {% for r in runs %}
+        <tr><td>{{ r.date }}</td><td><span class="badge badge--{{ r.mood }}">{{ r.status }}</span></td><td>{{ r.duration }}</td>
+          <td class="num">{{ r.sources }}</td><td class="num">{{ r.new }}</td><td class="num">{{ r.events }}</td></tr>
+        {% else %}<tr><td colspan="6" class="empty">Aucune collecte enregistrée.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </section>
+</div>
+{% endblock %}

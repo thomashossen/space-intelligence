@@ -1,0 +1,59 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon %}
+{% block title %}Acteurs{% endblock %}
+{% block content %}
+<div class="page">
+  <header class="page__head">
+    <h1>Acteurs</h1>
+    <p>Entreprises, institutions, programmes, technologies et pays cités dans les événements des 120 derniers jours. Le nombre d'événements compte chaque événement une fois, quel que soit le nombre d'articles.</p>
+  </header>
+
+  <form class="filters" action="/acteurs">
+    <label class="filters__q"><span class="sr-only">Rechercher un acteur</span>{{ icon("search") }}
+      <input name="q" type="search" value="{{ q }}" placeholder="Nom ou alias : Airbus, DGA, Galileo…"></label>
+    <label class="filters__sel"><span class="sr-only">Ordre</span>
+      <select name="sort" onchange="this.form.submit()">
+        <option value="cited" {% if sort == "cited" %}selected{% endif %}>Les plus cités</option>
+        <option value="rising" {% if sort == "rising" %}selected{% endif %}>Actifs cette semaine</option>
+        <option value="recent" {% if sort == "recent" %}selected{% endif %}>Cités récemment</option>
+        <option value="name" {% if sort == "name" %}selected{% endif %}>Ordre alphabétique</option>
+      </select></label>
+    {% if type_ %}<input type="hidden" name="type" value="{{ type_ }}">{% endif %}
+    <button class="btn btn--solid" type="submit">Rechercher</button>
+  </form>
+
+  <nav class="typetabs" aria-label="Type d'acteur">
+    <a href="?{{ {'q': q, 'sort': sort}|urlencode }}" {% if not type_ %}aria-current="true"{% endif %}>{{ icon("nodes") }}Tous <span>{{ all_count }}</span></a>
+    {% for v, lab, n in types %}
+    <a href="?{{ {'type': v, 'q': q, 'sort': sort}|urlencode }}" {% if type_ == v %}aria-current="true"{% endif %}>{{ icon({"company": "building", "organization": "landmark", "programme": "orbit", "technology": "chip", "country": "globe"}[v]) }}{{ lab }} <span>{{ n }}</span></a>
+    {% endfor %}
+  </nav>
+
+  {% if cards %}
+  <ul class="actor-grid">
+    {% for a in cards %}
+    <li>
+      <a class="actor-card" href="/acteurs/{{ a.id }}">
+        <span class="actor-card__icon actor-card__icon--{{ a.type }}">{{ icon(a.icon) }}</span>
+        <span class="actor-card__body">
+          <b>{{ a.name }}</b>
+          <span class="actor-card__meta">{{ a.type_label }}{% if a.country %}, {{ a.country }}{% endif %}{% if a.sector %}, {{ a.sector|lower }}{% endif %}</span>
+        </span>
+        <svg class="actor-card__spark" viewBox="0 0 {{ a.spark.w }} {{ a.spark.h }}" preserveAspectRatio="none" role="img" aria-label="Activité sur 12 semaines">
+          <polygon points="{{ a.spark.area }}"/><polyline points="{{ a.spark.line }}"/>
+        </svg>
+        <span class="actor-card__foot">
+          <span class="actor-card__n"><b>{{ a.events }}</b> événement{{ "s" if a.events > 1 }}</span>
+          <span class="actor-card__bar" aria-hidden="true"><span style="width: {{ a.share }}%"></span></span>
+          <span class="actor-card__seen">{% if a.week %}{{ a.week }} cette semaine{% else %}Cité {{ a.last_seen }}{% endif %}</span>
+        </span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if total > cards|length %}<p class="more-note">{{ cards|length }} acteurs affichés sur {{ total }}. Affinez avec la recherche ou un type.</p>{% endif %}
+  {% else %}
+  <p class="empty">Aucun acteur ne correspond. Seuls les acteurs du référentiel <code>entities.toml</code> sont reconnus.</p>
+  {% endif %}
+</div>
+{% endblock %}

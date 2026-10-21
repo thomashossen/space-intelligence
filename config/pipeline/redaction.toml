@@ -1,0 +1,49 @@
+# French briefs (summary, stakes, context) written by a language model for the
+# most important events. Off by default: the pipeline works without it.
+#
+#   provider = "local"      Free, no account, offline, ~1 s per event. No language model:
+#                           the summary is made of sentences taken from the articles,
+#                           translated from English by a small dedicated model (Argos, ~100 MB).
+#                           Install once: pip install ctranslate2 sentencepiece
+#                                         python -m app.pipeline translator install
+#                           Stakes come from the pipeline's scores (rule-based, in French).
+#   provider = "groq"       Free plan, no card, very fast. Key: https://console.groq.com/keys
+#                           export GROQ_API_KEY=…   (~30 requests/min, ~1,000/day per model)
+#   provider = "mistral"    Free "Experiment" plan, phone verification, strong French.
+#                           Key: https://console.mistral.ai   export MISTRAL_API_KEY=…
+#                           About 2 requests/min: 30 briefs take ~15 minutes.
+#   provider = "openai"     Any other OpenAI-compatible endpoint: set base_url and api_key_env.
+#   provider = "anthropic"  Claude API (paid). export ANTHROPIC_API_KEY=…
+#   provider = "ollama"     Local model through Ollama (free, needs a fast machine).
+#   provider = "none"       No briefs; the site shows a rule-based reading instead.
+#
+# Free tiers may use what you send to improve their models: here it is public press text.
+# Limits change without notice; check each console. Override for one command with
+# SECTOR_INTEL_REDACTION_PROVIDER and SECTOR_INTEL_REDACTION_MODEL, or --provider / --model.
+
+provider = "local"
+
+# Empty = the provider's default (groq: llama-3.3-70b-versatile, mistral: mistral-small-latest).
+# List what your key can use: python -m app.pipeline redact --provider groq --list-models
+model = ""
+
+# Briefs are written for the most important events first, at most this many per run.
+# Existing briefs are reused until a new independent origin joins the event.
+max_events_per_run = 30
+min_importance = 0
+
+# Read the article page of each origin (not Google News redirects) to give the
+# model the full text rather than the feed teaser. One request per page, 2 s apart per host.
+fetch_articles = true
+max_chars_per_source = 2500
+timeout_s = 90
+
+# Pause between two calls to the model, in seconds. -1 = the provider's default
+# (groq 2.5, mistral 31). Raise it if you see HTTP 429 errors.
+min_interval_s = -1
+
+# openai-compatible endpoint (provider = "openai" only)
+base_url = ""
+api_key_env = ""
+
+ollama_url = "http://localhost:11434"

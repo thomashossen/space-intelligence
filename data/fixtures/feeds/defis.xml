@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS CONTENT. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>European Commission — DG DEFIS (fixture)</title>
+<link>https://defence-industry-space.ec.europa.example/</link>
+<description>Fixture feed. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>Commission assesses gallium supply risk for European defence electronics</title>
+<link>https://defence-industry-space.ec.europa.example/news/gallium-supply-risk-defence-electronics_en</link>
+<guid isPermaLink="false">today-gallium-ec</guid>
+<pubDate>Tue, 06 Oct 2026 12:00:00 +0200</pubDate>
+<description>The European Commission is assessing the gallium supply risk for European defence electronics after China tightened export licensing for gallium.</description>
+<content:encoded><![CDATA[<p>The European Commission is assessing the gallium supply risk for European defence electronics after China tightened export licensing for gallium.</p><p>Gallium nitride is used in radar and electronic warfare power amplifiers. The Commission will consult industry on stockpiles and supply chain options as a critical raw material.</p>]]></content:encoded>
+</item>
+<item>
+<title>European Defence Fund backs hypersonic interceptor study</title>
+<link>https://defence-industry-space.ec.europa.example/news/edf-hypersonic-interceptor-study_en</link>
+<guid isPermaLink="false">today-hyp-ec</guid>
+<pubDate>Mon, 05 Oct 2026 10:00:00 +0200</pubDate>
+<description>The European Defence Fund will finance a study on interceptors able to defeat hypersonic glide vehicles, with MBDA among the participants.</description>
+<content:encoded><![CDATA[<p>The European Defence Fund will finance a study on interceptors able to defeat hypersonic glide vehicles, with MBDA among the participants.</p><p>The study covers guidance, propulsion and seekers for an endo-atmospheric interceptor.</p>]]></content:encoded>
+</item>
+<item>
+<title>Commission opens EDIP call to expand ammunition production capacity</title>
+<link>https://defence-industry-space.ec.europa.example/news/edip-call-ammunition-production_en</link>
+<guid isPermaLink="false">today-edip</guid>
+<pubDate>Mon, 05 Oct 2026 15:00:00 +0200</pubDate>
+<description>The European Commission opened a call for proposals under EDIP to expand ammunition and missile production capacity in Europe.</description>
+<content:encoded><![CDATA[<p>The European Commission opened a call for proposals under EDIP to expand ammunition and missile production capacity in Europe.</p><p>Projects can cover new production lines and the supply chain for energetic materials.</p>]]></content:encoded>
+</item>
+</channel>
+</rss>

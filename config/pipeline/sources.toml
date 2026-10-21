@@ -1,0 +1,283 @@
+# Source registry used by `python -m app.pipeline run --fixtures`.
+#
+# FIXTURE CATALOGUE. Every source below is replayed from files in data/fixtures/feeds/.
+# Hosts use the reserved `.example` TLD. Institution and company names are real actors,
+# but every item in the fixture files is FICTITIOUS. These sources feed the tests only.
+# Press titles (Kestrel Space Wire, Northline…) are invented publications.
+# The live catalogue is in sources.live.toml (disabled until you check each URL).
+#
+# Fields
+#   id               stable identifier, used in every table
+#   name             display name
+#   connector        rss | google_news | gdelt | youtube | arxiv | hal
+#   source_type      institutional | industrial | press | aggregator | video | research
+#   family           INS | IND | PRS | AGG | VID | RES  (proof-line families)
+#   tier             1 institutional & primary · 2 specialised press · 3 aggregators · 4 low reliability
+#                    The tier is ONE input of the credibility score, never a verdict.
+#   baseline_credibility  optional 0..1 override; defaults to scoring.toml [credibility.tier_baseline]
+#   domain, country, institution   provenance metadata
+#   publisher_entity entity id (entities.toml) when the source IS the actor (primary source)
+#   language         declared language (the cleaner still detects it)
+#   fixture          file name(s) under data/fixtures/feeds/ ; a missing file simulates an unreachable source
+#   url              live endpoint (unused in fixture mode)
+
+version = "fixtures-1"
+
+[[source]]
+id = "fx-esa"
+name = "ESA newsroom"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "www.esa.example"
+country = "EU"
+institution = "European Space Agency"
+publisher_entity = "esa"
+language = "en"
+fixture = ["esa.xml", "history/fx-esa.xml"]
+
+[[source]]
+id = "fx-arianespace"
+name = "Arianespace press releases"
+connector = "rss"
+source_type = "industrial"
+family = "IND"
+tier = 1
+domain = "www.arianespace.example"
+country = "FR"
+institution = "Arianespace"
+publisher_entity = "arianespace"
+language = "en"
+fixture = ["arianespace.xml"]
+
+[[source]]
+id = "fx-minarm"
+name = "Ministère des Armées — actualités"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "www.defense.gouv.example"
+country = "FR"
+institution = "French Ministry of the Armed Forces"
+publisher_entity = "fr-minarm"
+language = "fr"
+fixture = ["minarm.xml"]
+
+[[source]]
+id = "fx-mbda"
+name = "MBDA newsroom"
+connector = "rss"
+source_type = "industrial"
+family = "IND"
+tier = 1
+domain = "www.mbda.example"
+country = "FR"
+institution = "MBDA"
+publisher_entity = "mbda"
+language = "en"
+fixture = ["mbda.atom", "history/fx-mbda.xml"]
+
+[[source]]
+id = "fx-thales"
+name = "Thales press room"
+connector = "rss"
+source_type = "industrial"
+family = "IND"
+tier = 1
+domain = "www.thales.example"
+country = "FR"
+institution = "Thales"
+publisher_entity = "thales"
+language = "en"
+fixture = ["thales_malformed.xml"]
+
+[[source]]
+id = "fx-airbus"
+name = "Airbus newsroom"
+connector = "rss"
+source_type = "industrial"
+family = "IND"
+tier = 1
+domain = "www.airbus.example"
+country = "EU"
+institution = "Airbus"
+publisher_entity = "airbus"
+language = "en"
+fixture = ["airbus.xml", "history/fx-airbus.xml"]
+
+[[source]]
+id = "fx-nato"
+name = "NATO news"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "www.nato.example"
+country = "INT"
+institution = "NATO"
+publisher_entity = "nato"
+language = "en"
+fixture = ["nato.xml"]
+
+[[source]]
+id = "fx-defis"
+name = "European Commission — DG DEFIS"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "defence-industry-space.ec.europa.example"
+country = "EU"
+institution = "European Commission"
+publisher_entity = "eu-commission"
+language = "en"
+fixture = ["defis.xml"]
+
+[[source]]
+id = "fx-cnes"
+name = "CNES actualités"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "cnes.example"
+country = "FR"
+institution = "CNES"
+publisher_entity = "cnes"
+language = "fr"
+fixture = ["cnes_empty.xml"]
+
+[[source]]
+id = "fx-nasa"
+name = "NASA news releases"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "www.nasa.example"
+country = "US"
+institution = "NASA"
+publisher_entity = "nasa"
+language = "en"
+# No fixture file on purpose: simulates an unreachable source. The run must go on.
+fixture = ["nasa_UNREACHABLE.xml"]
+
+[[source]]
+id = "fx-kestrel"
+name = "Kestrel Space Wire"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "kestrel-spacewire.example"
+country = "GB"
+language = "en"
+fixture = ["kestrel.xml", "history/fx-kestrel.xml"]
+
+[[source]]
+id = "fx-northline"
+name = "Northline Defence Monitor"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "northline-defence.example"
+country = "NO"
+language = "en"
+fixture = ["northline.xml", "history/fx-northline.xml"]
+
+[[source]]
+id = "fx-halden"
+name = "Halden Industry Bulletin"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "halden-bulletin.example"
+country = "DE"
+language = "en"
+fixture = ["halden.xml", "history/fx-halden.xml"]
+
+[[source]]
+id = "fx-brightwater"
+name = "Brightwater Aviation Weekly"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "brightwater-aviation.example"
+country = "US"
+language = "en"
+fixture = ["history/fx-brightwater.xml"]
+
+[[source]]
+id = "fx-rumour"
+name = "Orbital Rumour Mill (blog)"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 4
+domain = "orbital-rumours.example"
+language = "en"
+fixture = ["rumour_blog.xml"]
+
+[[source]]
+id = "fx-gn-space"
+name = "Google News RSS — launchers, counter-drone, gallium"
+connector = "google_news"
+source_type = "aggregator"
+family = "AGG"
+tier = 3
+domain = "news.google.example"
+language = "en"
+fixture = ["google_news.xml", "history/fx-gn-space.xml"]
+
+[[source]]
+id = "fx-gdelt"
+name = "GDELT DOC 2.0 — A&D query"
+connector = "gdelt"
+source_type = "aggregator"
+family = "AGG"
+tier = 3
+domain = "api.gdeltproject.example"
+language = "en"
+fixture = ["gdelt.json"]
+
+[[source]]
+id = "fx-yt-esa"
+name = "ESA (YouTube channel feed)"
+connector = "youtube"
+source_type = "video"
+family = "VID"
+tier = 1
+domain = "www.youtube.example"
+country = "EU"
+institution = "European Space Agency"
+publisher_entity = "esa"
+language = "en"
+fixture = ["youtube_esa.atom"]
+
+[[source]]
+id = "fx-arxiv"
+name = "arXiv — guidance, propulsion, counter-UAS"
+connector = "arxiv"
+source_type = "research"
+family = "RES"
+tier = 2
+domain = "export.arxiv.example"
+language = "en"
+fixture = ["arxiv.atom"]
+
+[[source]]
+id = "fx-hal"
+name = "HAL — aérospatial"
+connector = "hal"
+source_type = "research"
+family = "RES"
+tier = 2
+domain = "api.archives-ouvertes.example"
+country = "FR"
+language = "fr"
+fixture = ["hal.json"]

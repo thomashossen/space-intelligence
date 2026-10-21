@@ -1,0 +1,61 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon, event_row %}
+{% block title %}{{ a.name }}{% endblock %}
+{% block content %}
+<div class="page">
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/acteurs">Acteurs</a><span aria-hidden="true">/</span><span>{{ a.type_label }}</span></nav>
+
+  <header class="actor-head">
+    <span class="actor-head__icon">{{ icon(a.icon) }}</span>
+    <div>
+      <h1>{{ a.name }}</h1>
+      <p class="actor-head__meta">{{ a.type_label }}{% if a.country %}, {{ a.country }}{% endif %}{% if a.sector %}, secteur {{ a.sector|lower }}{% endif %}</p>
+      {% if a.aliases %}<p class="actor-head__alias">Reconnu aussi sous : {{ a.aliases|join(", ") }}</p>{% endif %}
+    </div>
+  </header>
+
+  <div class="actor-grid-2">
+    <section class="panel actor-stats" aria-labelledby="act-title">
+      <h2 id="act-title">Activité</h2>
+      <dl class="kpis">
+        <div><dt>Événements</dt><dd>{{ a.events }}</dd></div>
+        <div><dt>Articles</dt><dd>{{ a.articles }}</dd></div>
+        <div><dt>Cette semaine</dt><dd>{{ week }}</dd></div>
+      </dl>
+      {% if a.events %}
+      <div class="bars" role="img" aria-label="Événements par semaine sur 12 semaines : {% for b in bars %}{{ b.value }}{{ ', ' if not loop.last }}{% endfor %}">
+        {% for b in bars %}<span class="bars__col" title="{{ b.label }} : {{ b.value }}"><span style="height: {{ [b.height, 3]|max if b.value else 0 }}%"></span></span>{% endfor %}
+      </div>
+      <p class="bars__axis"><span>il y a 12 semaines</span><span>cette semaine</span></p>
+      {% if a.first_seen %}<p class="actor-stats__seen">Première mention le {{ a.first_seen }}, dernière {{ a.last_seen }}.</p>{% endif %}
+      {% else %}
+      <p class="empty">Aucun événement ne cite cet acteur dans les 120 derniers jours.</p>
+      {% endif %}
+    </section>
+
+    <section class="panel" aria-labelledby="rel-title">
+      <h2 id="rel-title">Souvent cité avec</h2>
+      {% if related %}
+      <ul class="related">
+        {% for r in related %}<li><a href="/acteurs/{{ r.id }}">{{ icon(r.icon) }}<span>{{ r.name }}</span><b>{{ r.weight }}</b></a></li>{% endfor %}
+      </ul>
+      <p class="related__note">Le chiffre indique le nombre d'événements où les deux sont cités ensemble.</p>
+      {% else %}<p class="empty">Pas encore d'association récurrente.</p>{% endif %}
+      {% if signals %}
+      <h3 class="related__h">Signaux</h3>
+      <ul class="mini-signals">{% for s in signals %}<li><span class="badge badge--{{ 'up' if s.up else 'down' }}">{{ s.kind }}</span> {{ s.current }} cette semaine, {{ s.baseline }} en moyenne</li>{% endfor %}</ul>
+      {% endif %}
+    </section>
+  </div>
+
+  <section class="panel panel--list" aria-labelledby="ev-title">
+    <header class="panel__head"><div><h2 id="ev-title">{% if total %}{{ total }} événement{{ "s" if total > 1 }} cit{{ "ent" if total > 1 else "e" }} {{ a.name }}{% else %}Événements{% endif %}</h2><p>Du plus récent au plus ancien.</p></div></header>
+    {% for e in events %}{{ event_row(e) }}{% else %}<p class="empty">Rien pour l'instant. Les événements apparaîtront dès qu'un article cite cet acteur.</p>{% endfor %}
+  </section>
+  {% if pages > 1 %}
+  <nav class="pager" aria-label="Pagination">
+    {% if prev_url %}<a href="{{ prev_url }}">Page précédente</a>{% endif %}<span>Page {{ page }} sur {{ pages }}</span>{% if next_url %}<a href="{{ next_url }}">Page suivante</a>{% endif %}
+  </nav>
+  {% endif %}
+</div>
+{% endblock %}

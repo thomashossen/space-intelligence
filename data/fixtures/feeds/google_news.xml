@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — shaped like a Google News RSS search feed. FICTITIOUS items; hosts use .example. -->
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+<title>"launcher" OR "counter-drone" OR "gallium" - Google News (fixture)</title>
+<link>https://news.google.example/search?q=launcher</link>
+<language>en-US</language>
+<description>Google News (fixture)</description>
+<item>
+<title>Ariane 6 launches two Galileo satellites - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMiT2h0dHBzOi8va2VzdHJlbC1zcGFjZXdpcmUuZXhhbXBsZS8yMDI2LzEwLzA3?oc=5</link>
+<guid isPermaLink="false">today-a6-gn</guid>
+<pubDate>Tue, 06 Oct 2026 22:40:00 GMT</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMiT2h0dHBz?oc=5"&gt;Ariane 6 launches two Galileo satellites&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color="#6f6f6f"&gt;Kestrel Space Wire&lt;/font&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>French procurement agency orders 40 counter-drone systems from MBDA - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMiQmh0dHBzOi8vbm9ydGhsaW5lLWRlZmVuY2UuZXhhbXBsZS8yMDI2?oc=5</link>
+<guid isPermaLink="false">today-mbda-gn</guid>
+<pubDate>Tue, 06 Oct 2026 12:20:00 GMT</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMiQmh0?oc=5"&gt;French procurement agency orders 40 counter-drone systems from MBDA&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>MaiaSpace completes first hot-fire of its upper stage engine - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMiR2h0dHBzOi8va2VzdHJlbC1zcGFjZXdpcmUuZXhhbXBsZS9tYWlh?oc=5</link>
+<guid isPermaLink="false">today-maia-gn</guid>
+<pubDate>Tue, 06 Oct 2026 15:10:00 GMT</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMiR2h0?oc=5"&gt;MaiaSpace completes first hot-fire of its upper stage engine&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>EU weighs gallium stockpile as China curbs exports - Atlas Procurement Letter</title>
+<link>https://news.google.example/rss/articles/CBMiP2h0dHBzOi8vYXRsYXMtcHJvY3VyZW1lbnQuZXhhbXBsZS9nYWxsaXVt?oc=5</link>
+<guid isPermaLink="false">today-gallium-gn</guid>
+<pubDate>Tue, 06 Oct 2026 14:30:00 GMT</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMiP2h0?oc=5"&gt;EU weighs gallium stockpile as China curbs exports&lt;/a&gt;</description>
+<source url="https://atlas-procurement.example">Atlas Procurement Letter</source>
+</item>
+</channel>
+</rss>

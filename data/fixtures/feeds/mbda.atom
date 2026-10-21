@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FIXTURE — FICTITIOUS CONTENT. -->
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>MBDA newsroom (fixture)</title>
+  <id>tag:mbda.example,2026:newsroom</id>
+  <updated>2026-10-06T11:30:00+02:00</updated>
+  <link href="https://www.mbda.example/newsroom"/>
+  <entry>
+    <title>MBDA wins French order for 40 counter-drone systems</title>
+    <id>tag:mbda.example,2026:today-mbda-order</id>
+    <link rel="alternate" href="https://www.mbda.example/newsroom/mbda-wins-french-order-counter-drone-systems/?ref=homepage"/>
+    <published>2026-10-06T11:30:00+02:00</published>
+    <updated>2026-10-06T11:30:00+02:00</updated>
+    <author><name>MBDA Communications</name></author>
+    <summary>The French defence procurement agency DGA has ordered 40 counter-drone systems from MBDA for the French Ministry of the Armed Forces.</summary>
+    <content type="html">&lt;p&gt;The French defence procurement agency DGA has ordered 40 counter-drone systems from MBDA for the French Ministry of the Armed Forces.&lt;/p&gt;&lt;p&gt;The mobile counter-UAS system combines a radar, electro-optical sensors and interceptors. First deliveries are planned in 2027.&lt;/p&gt;&lt;div class="newsletter"&gt;Subscribe to our newsletter&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>MBDA presents hypersonic interceptor concept at European Defence Fund review</title>
+    <id>tag:mbda.example,2026:today-mbda-hyp</id>
+    <link rel="alternate" href="https://www.mbda.example/newsroom/hypersonic-interceptor-concept-edf-review/"/>
+    <published>2026-10-05T14:00:00+02:00</published>
+    <author><name>MBDA Communications</name></author>
+    <summary>MBDA presented its hypersonic interceptor concept to European Defence Fund reviewers, as part of the European study on defence against hypersonic glide vehicles.</summary>
+    <content type="html">&lt;p&gt;MBDA presented its hypersonic interceptor concept to European Defence Fund reviewers, as part of the European study on defence against hypersonic glide vehicles.&lt;/p&gt;&lt;p&gt;The interceptor work covers guidance, propulsion and seeker technologies.&lt;/p&gt;</content>
+  </entry>
+</feed>

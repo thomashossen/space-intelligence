@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS CONTENT. Real organisation name, invented news. Host uses the reserved .example TLD. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>ESA newsroom (fixture)</title>
+<link>https://www.esa.example/</link>
+<description>Fixture feed for sector//intel. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>ESA selects Isar Aerospace for 4 missions under the European Launcher Challenge</title>
+<link>https://www.esa.example/Enabling_Support/Space_Transportation/ESA_selects_Isar_Aerospace?utm_source=rss&amp;utm_medium=feed</link>
+<guid isPermaLink="false">today-isar-esa</guid>
+<pubDate>Tue, 06 Oct 2026 09:00:00 +0200</pubDate>
+<description>ESA selects Isar Aerospace to fly 4 missions between 2027 and 2030 under the European Launcher Challenge.</description>
+<content:encoded><![CDATA[
+<header class="site-header"><a href="/">ESA</a> <nav>Space Transportation | Science | Applications</nav></header>
+<div class="cookie-banner">We use cookies to improve your experience. Accept all cookies</div>
+<article>
+<h1>ESA selects Isar Aerospace for 4 missions under the European Launcher Challenge</h1>
+<p>ESA selects Isar Aerospace to fly 4 missions between 2027 and 2030 under the European Launcher Challenge, the agency announced on Tuesday.</p>
+<p>The selection follows the evaluation of proposals from European launch service providers. The missions will carry institutional payloads to low Earth orbit with the Spectrum launcher.</p>
+<p>&ldquo;Competition is how Europe secures autonomous access to space,&rdquo; the Director of Space Transportation said.</p>
+<p>ESA is an intergovernmental organisation with member states across Europe. Media enquiries: media-desk@esa.example</p>
+</article>
+<div class="share-buttons">Share this article <a href="#">X</a> <a href="#">LinkedIn</a></div>
+<footer>© ESA (fixture) — All rights reserved</footer>
+]]></content:encoded>
+</item>
+<item>
+<title>Ariane 6 launches two Galileo satellites</title>
+<link>https://www.esa.example/Applications/Satellite_navigation/Ariane_6_launches_two_Galileo_satellites</link>
+<guid isPermaLink="false">today-a6-esa</guid>
+<pubDate>Tue, 06 Oct 2026 23:30:00 +0200</pubDate>
+<description>Two Galileo navigation satellites were placed into orbit by Ariane 6 from Europe's Spaceport in French Guiana.</description>
+<content:encoded><![CDATA[
+<nav class="breadcrumbs">Applications &gt; Satellite navigation</nav>
+<p>Two Galileo navigation satellites were placed into orbit by Ariane 6 from Europe's Spaceport in French Guiana on Tuesday evening.</p>
+<p>The satellites, operated for the European Commission, join the Galileo constellation. ESA managed the deployment on behalf of the EU.</p>
+<p>ESA is an intergovernmental organisation with member states across Europe. Media enquiries: media-desk@esa.example</p>
+<aside class="related">Related articles: Galileo turns ten</aside>
+]]></content:encoded>
+</item>
+</channel>
+</rss>

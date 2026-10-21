@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — CONTENU FICTIF. Nom d'institution réel, informations inventées. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Ministère des Armées — actualités (fixture)</title>
+<link>https://www.defense.gouv.example/</link>
+<description>Flux de test. Toutes les informations sont inventées.</description>
+<language>fr</language>
+<item>
+<title>La DGA commande à MBDA 40 systèmes de lutte anti-drones</title>
+<link>https://www.defense.gouv.example/dga/actualites/dga-commande-mbda-systemes-lutte-anti-drones#top</link>
+<guid isPermaLink="false">today-mbda-minarm</guid>
+<pubDate>Tue, 06 Oct 2026 10:00:00 +0200</pubDate>
+<description>La Direction générale de l'armement a notifié à MBDA une commande de 40 systèmes de lutte anti-drones au profit des armées françaises.</description>
+<content:encoded><![CDATA[<p>La Direction générale de l'armement (DGA) a notifié à MBDA une commande de 40 systèmes de lutte anti-drones au profit des armées françaises.</p><p>Ce contrat du ministère des Armées porte sur des systèmes mobiles associant un radar, des capteurs optroniques et des intercepteurs. Les premières livraisons sont attendues en 2027.</p><p>Abonnez-vous à la lettre d'information</p>]]></content:encoded>
+</item>
+<item>
+<title>Exercice de défense aérienne : calendrier 2027 des essais</title>
+<link>https://www.defense.gouv.example/actualites/exercice-defense-aerienne-2027</link>
+<guid isPermaLink="false">today-future</guid>
+<pubDate>Mon, 15 Mar 2027 10:00:00 +0100</pubDate>
+<description>Le ministère des Armées publie le calendrier des essais de défense aérienne prévus en 2027.</description>
+<content:encoded><![CDATA[<p>Le ministère des Armées publie le calendrier des essais de défense aérienne prévus en 2027 avec les forces françaises et leurs partenaires.</p><p>Les essais porteront sur des intercepteurs et des radars de défense aérienne.</p>]]></content:encoded>
+</item>
+</channel>
+</rss>

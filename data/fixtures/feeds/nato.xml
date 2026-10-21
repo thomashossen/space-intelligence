@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS CONTENT. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>NATO news (fixture)</title>
+<link>https://www.nato.example/</link>
+<description>Fixture feed. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>NATO tests counter-drone systems from 12 nations at technical interoperability exercise</title>
+<link>https://www.nato.example/cps/en/natohq/news_counter_drone_exercise.htm?selectedLocale=en</link>
+<guid isPermaLink="false">today-nato-cuas</guid>
+<pubDate>Mon, 05 Oct 2026 16:00:00 +0200</pubDate>
+<description>Counter-drone systems from 12 nations were tested together at NATO's technical interoperability exercise this week.</description>
+<content:encoded><![CDATA[<p>Counter-drone systems from 12 nations were tested together at NATO's technical interoperability exercise this week.</p><p>The exercise assessed how detection, identification and defeat systems share data against small drones and loitering munitions.</p>]]></content:encoded>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,171 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon, event_row %}
+{% block title %}Accueil{% endblock %}
+{% block body_class %}page-home{% endblock %}
+{% block content %}
+
+{% set hero_photo = img_for("hero") %}
+<section class="hero{% if hero_photo %} hero--photo{% endif %}" aria-labelledby="hero-title"{% if hero_photo %} style="--photo: url('{{ hero_photo }}')"{% endif %}>
+  <div class="hero__sky" aria-hidden="true"></div>
+  <div class="hero__planet" aria-hidden="true"></div>
+  <div class="hero__in">
+    <div class="hero__copy">
+      <p class="hero__live"><span class="pulse" aria-hidden="true"></span>
+        {% if info.last_run %}Mis à jour le {{ info.last_run }}{% else %}En attente de la première collecte{% endif %}
+      </p>
+      <h1 id="hero-title">Le spatial et la défense,<br> simplement.</h1>
+      <p class="hero__lead">Ce qui s'est passé, qui l'a rapporté et pourquoi ça compte. Chaque événement est recoupé entre plusieurs sources et relié aux articles d'origine.</p>
+      <form class="bigsearch" action="/actualites" role="search">
+        <label class="sr-only" for="q-hero">Rechercher dans les événements</label>
+        {{ icon("search") }}
+        <input id="q-hero" name="q" type="search" placeholder="Ariane 6, constellation, contrat de défense…" autocomplete="off">
+        <button type="submit">Rechercher</button>
+      </form>
+      {% if suggestions %}
+      <p class="hero__try"><span>Acteurs les plus cités :</span>
+        {% for s in suggestions %}<a class="pill" href="/acteurs/{{ s.id }}">{{ s.name }}</a>{% endfor %}
+      </p>
+      {% endif %}
+    </div>
+    <aside class="hero__card" aria-label="La collecte en chiffres">
+      <p class="hero__card-title">Dans la base</p>
+      <dl>
+        <div><dt>Événements</dt><dd>{{ info.events }}</dd></div>
+        <div><dt>Articles analysés</dt><dd>{{ info.articles }}</dd></div>
+        <div><dt>Acteurs repérés</dt><dd>{{ info.entities }}</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section class="modules" aria-label="Rubriques">
+  {% set modules = [
+    ("actualites", "/actualites", "radar", "Actualités", "Les événements du secteur, recoupés et classés par importance.", "Voir les actualités"),
+    ("comprendre", "/actualites?type=research", "cap", "Comprendre", "Les travaux de recherche récents, d'arXiv et de HAL.", "Lire la recherche"),
+    ("carte", "/acteurs", "nodes", "Acteurs", "Entreprises, institutions, programmes et technologies cités.", "Explorer les acteurs"),
+    ("geopolitique", "/actualites?theme=GEOPOLITICS", "landmark", "Géopolitique", "Souveraineté, contrôle export et rapports de force.", "Voir les événements"),
+    ("tendances", "/tendances", "trend", "Tendances", "Les sujets qui accélèrent ou ralentissent, semaine après semaine.", "Voir les tendances"),
+  ] %}
+  {% for key, href, ic, title, text, cta in modules %}
+  {% set mod_photo = img_for("mod-" ~ ("acteurs" if key == "carte" else key)) %}
+  <a class="mod mod--{{ key }}{% if mod_photo %} mod--photo{% endif %}" href="{{ href }}"{% if mod_photo %} style="--photo: url('{{ mod_photo }}')"{% endif %}>
+    <span class="mod__icon">{{ icon(ic) }}</span>
+    <span class="mod__deco" aria-hidden="true">{{ icon(ic) }}</span>
+    <span class="mod__title">{{ title }}</span>
+    <span class="mod__text">{{ text }}</span>
+    <span class="mod__cta">{{ cta }}{{ icon("arrow") }}</span>
+  </a>
+  {% endfor %}
+</section>
+
+<div class="zone">
+  <div class="zone__in grid-3">
+    <section class="panel panel--une" aria-labelledby="une-title">
+      <header class="panel__head">
+        <span class="panel__icon">{{ icon("radar") }}</span>
+        <div><h2 id="une-title">À la une</h2>
+          <p>Les événements les plus importants {% if une_window == 7 %}des 7 derniers jours{% else %}des {{ une_window }} derniers jours{% endif %}.</p></div>
+        <a class="panel__more" href="/actualites">Toutes les actualités</a>
+      </header>
+      {% for e in une %}{{ event_row(e) }}{% else %}
+      <p class="empty">Aucun événement pour l'instant. Lancez une collecte : <code>python -m app.pipeline run --live</code>.</p>
+      {% endfor %}
+    </section>
+
+    <section class="panel" aria-labelledby="comp-title">
+      <header class="panel__head">
+        <span class="panel__icon panel__icon--indigo">{{ icon("cap") }}</span>
+        <div><h2 id="comp-title">Comprendre</h2><p>Les derniers travaux de recherche.</p></div>
+      </header>
+      <ul class="papers">
+        {% for p in research %}
+        <li>
+          <a href="{{ p.url }}" rel="noopener" target="_blank">{{ p.title }}{{ icon("external", "ic--sm") }}</a>
+          <p>{{ p.source }}, {{ p.date }}</p>
+        </li>
+        {% else %}
+        <li class="empty">Aucune publication collectée.</li>
+        {% endfor %}
+      </ul>
+      <a class="panel__more panel__more--foot" href="/actualites?type=research">Toute la recherche</a>
+    </section>
+
+    <section class="panel" aria-labelledby="tr-title">
+      <header class="panel__head">
+        <span class="panel__icon panel__icon--violet">{{ icon("trend") }}</span>
+        <div><h2 id="tr-title">Tendances</h2><p>Événements cette semaine, comparés à la moyenne.</p></div>
+      </header>
+      <ul class="trends">
+        {% for t in trends %}
+        <li class="trend trend--{{ t.mood }}">
+          <span class="trend__ic">{{ icon("trend" if t.mood == "up" else ("trend-down" if t.mood == "down" else "flat")) }}</span>
+          <div>
+            <p class="trend__name"><a href="/actualites?theme={{ t.code|urlencode }}">{{ t.label }}</a> <span class="badge badge--{{ t.mood }}">{{ t.word }}</span></p>
+            <p class="trend__data">{{ t.current }} événement{{ "s" if t.current > 1 }} en 7 jours, contre {{ t.baseline|round(1)|string|replace(".", ",") }} par semaine en moyenne.</p>
+          </div>
+        </li>
+        {% else %}
+        <li class="empty">Pas encore assez d'événements.</li>
+        {% endfor %}
+      </ul>
+      <a class="panel__more panel__more--foot" href="/tendances">Toutes les tendances</a>
+    </section>
+  </div>
+</div>
+
+<div class="band">
+  <div class="band__in">
+    {% set eco_photo = img_for("eco") %}
+    <section class="eco{% if eco_photo %} eco--photo{% endif %}" aria-labelledby="eco-title"{% if eco_photo %} style="--photo: url('{{ eco_photo }}')"{% endif %}>
+      <div class="eco__copy">
+        <h2 id="eco-title">L'écosystème cité dans l'actualité</h2>
+        <p>Entreprises, institutions, programmes, technologies et pays repérés dans les événements collectés.</p>
+        <a class="btn btn--ghost" href="/acteurs">Explorer les acteurs{{ icon("arrow") }}</a>
+      </div>
+      {# Bubbles and lines share one box and one coordinate system (percent of the box):
+         each line ends exactly at the centre of its bubble. #}
+      {% set pos = [(22, 20), (78, 16), (50, 50), (24, 84), (80, 80)] %}
+      <div class="eco__map">
+        <svg class="eco__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="50" cy="50" rx="24" ry="38"/><ellipse cx="50" cy="50" rx="44" ry="62"/>
+          {% for x, y in pos %}{% if not loop.index == 3 %}<line x1="50" y1="50" x2="{{ x }}" y2="{{ y }}"/>{% endif %}{% endfor %}
+          <line x1="{{ pos[0][0] }}" y1="{{ pos[0][1] }}" x2="{{ pos[3][0] }}" y2="{{ pos[3][1] }}"/>
+          <line x1="{{ pos[1][0] }}" y1="{{ pos[1][1] }}" x2="{{ pos[4][0] }}" y2="{{ pos[4][1] }}"/>
+        </svg>
+        <ul>
+          {% for n in ecosystem %}
+          <li class="eco__node" style="left: {{ pos[loop.index0][0] }}%; top: {{ pos[loop.index0][1] }}%"><a href="/acteurs?type={{ n.type }}">{{ icon(n.icon) }}<span><strong>{{ n.count }}</strong> {{ n.label|lower }}</span></a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <section class="state" aria-labelledby="state-title">
+      <h2 id="state-title">État de la collecte</h2>
+      <ul>
+        <li><span>Sources à jour</span><b>{{ info.sources_ok }} / {{ info.sources_active }}</b></li>
+        <li><span>Événements</span><b>{{ info.events }}</b></li>
+        <li><span>Signaux statistiques</span><b>{{ info.signals }}</b></li>
+        <li><span>Semaines d'historique</span><b>{{ info.history_weeks }}</b></li>
+      </ul>
+      {% if info.sources_error %}
+      <p class="state__warn">{{ icon("alert") }}<span>En erreur : {% for s in info.sources_error %}{{ s.name }}{{ ", " if not loop.last }}{% endfor %}.</span></p>
+      {% endif %}
+      <a class="btn btn--ghost" href="/collecte">Voir le détail{{ icon("arrow") }}</a>
+    </section>
+  </div>
+</div>
+
+<section class="method" aria-labelledby="method-title">
+  <div class="method__in">
+    <blockquote>
+      <p id="method-title">Une information n'a de valeur que si l'on sait d'où elle vient.</p>
+    </blockquote>
+    <ul>
+      <li>{{ icon("link") }}<div><b>Recouper</b><span>Les copies d'un même article sont fusionnées, seules les origines indépendantes comptent.</span></div></li>
+      <li>{{ icon("contract") }}<div><b>Citer</b><span>Chaque événement renvoie vers ses articles sources.</span></div></li>
+      <li>{{ icon("target") }}<div><b>Mesurer</b><span>Importance, crédibilité et nouveauté sont notées sur 100, avec leur explication.</span></div></li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

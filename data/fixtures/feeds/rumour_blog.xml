@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS low-reliability blog (tier 4). Contradicts the ESA figure on purpose; contains empty and very short entries. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Orbital Rumour Mill (fixture)</title>
+<link>https://orbital-rumours.example/</link>
+<description>Invented blog. Every item is invented.</description>
+<item>
+<title>ESA deal with Isar Aerospace covers 6 missions, sources claim</title>
+<link>https://orbital-rumours.example/posts/esa-isar-6-missions</link>
+<guid isPermaLink="false">today-isar-rumour</guid>
+<pubDate>Tue, 06 Oct 2026 15:30:00 +0200</pubDate>
+<description>ESA's Launcher Challenge award to Isar Aerospace covers 6 missions, not the announced number, people familiar with the deal claim.</description>
+<content:encoded><![CDATA[<p>ESA's Launcher Challenge award to Isar Aerospace covers 6 missions, not the announced number, people familiar with the deal claim.</p><p>Neither ESA nor Isar Aerospace commented.</p>]]></content:encoded>
+</item>
+<item>
+<title></title>
+<link>https://orbital-rumours.example/posts/stay-tuned</link>
+<guid isPermaLink="false">today-rumour-notitle</guid>
+<pubDate>Tue, 06 Oct 2026 20:00:00 +0200</pubDate>
+<description>Big week for European launchers. Stay tuned for more.</description>
+</item>
+<item>
+<title></title>
+<link>https://orbital-rumours.example/posts/empty</link>
+<guid isPermaLink="false">today-rumour-empty</guid>
+<pubDate>Tue, 06 Oct 2026 20:30:00 +0200</pubDate>
+<description></description>
+</item>
+<item>
+<title>🚀🚀🚀 soon</title>
+<link>https://orbital-rumours.example/posts/soon</link>
+<guid isPermaLink="false">today-rumour-emoji</guid>
+<pubDate>Tue, 06 Oct 2026 21:00:00 +0200</pubDate>
+<description>🚀🚀</description>
+</item>
+</channel>
+</rss>

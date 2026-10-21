@@ -1,0 +1,1002 @@
+# Controlled entity nomenclature (gazetteer).
+#
+# One block per entity. Matching is alias-based, longest match first, on word boundaries.
+# Case: aliases written ALL CAPS with 5 characters or fewer (ESA, SES, MBDA, US…) match
+# case-sensitively so that "ses" or "esa" in another language never match; every other
+# alias matches case-insensitively, so "Airbus", "Airbus SE" and "AIRBUS" are one entity.
+#
+# type     company | organization | country | region | technology | material | programme
+# country  ISO 3166-1 alpha-2 (EU / INT for multinational)
+# sector   AERONAUTICS | SPACE | DEFENSE | MULTI
+# parent   entity id of the parent company (no automatic roll-up of counts)
+#
+# Adding an entity = adding a block. No code change. Products are modelled as programmes.
+
+version = "1.0.0"
+
+# ------------------------------------------------------------------ companies
+[[entity]]
+id = "airbus"
+name = "Airbus"
+type = "company"
+aliases = ["Airbus SE", "Airbus Group", "AIRBUS", "Airbus Commercial Aircraft"]
+country = "EU"
+sector = "MULTI"
+
+[[entity]]
+id = "airbus-ds"
+name = "Airbus Defence and Space"
+type = "company"
+aliases = ["Airbus Defence & Space", "Airbus DS"]
+country = "EU"
+sector = "DEFENSE"
+parent = "airbus"
+
+[[entity]]
+id = "safran"
+name = "Safran"
+type = "company"
+aliases = ["Safran SA", "Safran Aircraft Engines", "Safran Electronics & Defense"]
+country = "FR"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "thales"
+name = "Thales"
+type = "company"
+aliases = ["Thales Group", "Thales SA"]
+country = "FR"
+sector = "DEFENSE"
+
+[[entity]]
+id = "thales-alenia-space"
+name = "Thales Alenia Space"
+type = "company"
+aliases = []
+country = "EU"
+sector = "SPACE"
+parent = "thales"
+
+[[entity]]
+id = "mbda"
+name = "MBDA"
+type = "company"
+aliases = ["MBDA Systems", "MBDA France", "MBDA UK"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "dassault-aviation"
+name = "Dassault Aviation"
+type = "company"
+aliases = ["Dassault"]
+country = "FR"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "arianegroup"
+name = "ArianeGroup"
+type = "company"
+aliases = ["Ariane Group"]
+country = "FR"
+sector = "SPACE"
+
+[[entity]]
+id = "arianespace"
+name = "Arianespace"
+type = "company"
+aliases = []
+country = "FR"
+sector = "SPACE"
+parent = "arianegroup"
+
+[[entity]]
+id = "maiaspace"
+name = "MaiaSpace"
+type = "company"
+aliases = ["Maia Space"]
+country = "FR"
+sector = "SPACE"
+parent = "arianegroup"
+
+[[entity]]
+id = "leonardo"
+name = "Leonardo"
+type = "company"
+aliases = ["Leonardo S.p.A.", "Leonardo SpA"]
+country = "IT"
+sector = "DEFENSE"
+
+[[entity]]
+id = "bae"
+name = "BAE Systems"
+type = "company"
+aliases = ["BAE"]
+country = "GB"
+sector = "DEFENSE"
+
+[[entity]]
+id = "rheinmetall"
+name = "Rheinmetall"
+type = "company"
+aliases = ["Rheinmetall AG"]
+country = "DE"
+sector = "DEFENSE"
+
+[[entity]]
+id = "saab"
+name = "Saab"
+type = "company"
+aliases = ["Saab AB"]
+country = "SE"
+sector = "DEFENSE"
+
+[[entity]]
+id = "lockheed"
+name = "Lockheed Martin"
+type = "company"
+aliases = ["Lockheed"]
+country = "US"
+sector = "DEFENSE"
+
+[[entity]]
+id = "rtx"
+name = "RTX"
+type = "company"
+aliases = ["RTX Corporation"]
+country = "US"
+sector = "DEFENSE"
+
+[[entity]]
+id = "raytheon"
+name = "Raytheon"
+type = "company"
+aliases = []
+country = "US"
+sector = "DEFENSE"
+parent = "rtx"
+
+[[entity]]
+id = "pratt-whitney"
+name = "Pratt & Whitney"
+type = "company"
+aliases = ["Pratt and Whitney"]
+country = "US"
+sector = "AERONAUTICS"
+parent = "rtx"
+
+[[entity]]
+id = "collins"
+name = "Collins Aerospace"
+type = "company"
+aliases = []
+country = "US"
+sector = "AERONAUTICS"
+parent = "rtx"
+
+[[entity]]
+id = "northrop"
+name = "Northrop Grumman"
+type = "company"
+aliases = []
+country = "US"
+sector = "DEFENSE"
+
+[[entity]]
+id = "boeing"
+name = "Boeing"
+type = "company"
+aliases = ["The Boeing Company"]
+country = "US"
+sector = "MULTI"
+
+[[entity]]
+id = "general-dynamics"
+name = "General Dynamics"
+type = "company"
+aliases = []
+country = "US"
+sector = "DEFENSE"
+
+[[entity]]
+id = "gulfstream"
+name = "Gulfstream"
+type = "company"
+aliases = ["Gulfstream Aerospace"]
+country = "US"
+sector = "AERONAUTICS"
+parent = "general-dynamics"
+
+[[entity]]
+id = "bombardier"
+name = "Bombardier"
+type = "company"
+aliases = []
+country = "CA"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "textron"
+name = "Textron Aviation"
+type = "company"
+aliases = ["Textron"]
+country = "US"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "embraer"
+name = "Embraer"
+type = "company"
+aliases = []
+country = "BR"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "ohb"
+name = "OHB"
+type = "company"
+aliases = ["OHB SE", "OHB System"]
+country = "DE"
+sector = "SPACE"
+
+[[entity]]
+id = "isar"
+name = "Isar Aerospace"
+type = "company"
+aliases = []
+country = "DE"
+sector = "SPACE"
+
+[[entity]]
+id = "rfa"
+name = "Rocket Factory Augsburg"
+type = "company"
+aliases = []
+country = "DE"
+sector = "SPACE"
+
+[[entity]]
+id = "rocket-lab"
+name = "Rocket Lab"
+type = "company"
+aliases = []
+country = "US"
+sector = "SPACE"
+
+[[entity]]
+id = "spacex"
+name = "SpaceX"
+type = "company"
+aliases = ["Space Exploration Technologies"]
+country = "US"
+sector = "SPACE"
+
+[[entity]]
+id = "exploration-company"
+name = "The Exploration Company"
+type = "company"
+aliases = []
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "avio"
+name = "Avio"
+type = "company"
+aliases = ["Avio SpA"]
+country = "IT"
+sector = "SPACE"
+
+[[entity]]
+id = "eutelsat"
+name = "Eutelsat"
+type = "company"
+aliases = ["Eutelsat OneWeb", "OneWeb"]
+country = "FR"
+sector = "SPACE"
+
+[[entity]]
+id = "ses"
+name = "SES"
+type = "company"
+aliases = ["SES S.A."]
+country = "LU"
+sector = "SPACE"
+
+[[entity]]
+id = "knds"
+name = "KNDS"
+type = "company"
+aliases = []
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "hensoldt"
+name = "Hensoldt"
+type = "company"
+aliases = []
+country = "DE"
+sector = "DEFENSE"
+
+[[entity]]
+id = "indra"
+name = "Indra"
+type = "company"
+aliases = ["Indra Sistemas"]
+country = "ES"
+sector = "DEFENSE"
+
+[[entity]]
+id = "kongsberg"
+name = "Kongsberg"
+type = "company"
+aliases = ["Kongsberg Defence & Aerospace"]
+country = "NO"
+sector = "DEFENSE"
+
+[[entity]]
+id = "diehl"
+name = "Diehl Defence"
+type = "company"
+aliases = []
+country = "DE"
+sector = "DEFENSE"
+
+[[entity]]
+id = "naval-group"
+name = "Naval Group"
+type = "company"
+aliases = []
+country = "FR"
+sector = "DEFENSE"
+
+[[entity]]
+id = "helsing"
+name = "Helsing"
+type = "company"
+aliases = []
+country = "DE"
+sector = "DEFENSE"
+
+[[entity]]
+id = "quantum-systems"
+name = "Quantum Systems"
+type = "company"
+aliases = []
+country = "DE"
+sector = "DEFENSE"
+
+[[entity]]
+id = "anduril"
+name = "Anduril"
+type = "company"
+aliases = ["Anduril Industries"]
+country = "US"
+sector = "DEFENSE"
+
+[[entity]]
+id = "rolls-royce"
+name = "Rolls-Royce"
+type = "company"
+aliases = ["Rolls Royce"]
+country = "GB"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "ge-aerospace"
+name = "GE Aerospace"
+type = "company"
+aliases = []
+country = "US"
+sector = "AERONAUTICS"
+
+# ------------------------------------------------------------------ organisations
+[[entity]]
+id = "esa"
+name = "ESA"
+type = "organization"
+aliases = ["European Space Agency", "Agence spatiale européenne"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "nasa"
+name = "NASA"
+type = "organization"
+aliases = []
+country = "US"
+sector = "SPACE"
+
+[[entity]]
+id = "cnes"
+name = "CNES"
+type = "organization"
+aliases = ["Centre national d'études spatiales"]
+country = "FR"
+sector = "SPACE"
+
+[[entity]]
+id = "dlr"
+name = "DLR"
+type = "organization"
+aliases = ["German Aerospace Center"]
+country = "DE"
+sector = "SPACE"
+
+[[entity]]
+id = "dga"
+name = "DGA"
+type = "organization"
+aliases = ["Direction générale de l'armement", "French defence procurement agency"]
+country = "FR"
+sector = "DEFENSE"
+
+[[entity]]
+id = "fr-minarm"
+name = "French Ministry of the Armed Forces"
+type = "organization"
+aliases = ["Ministère des Armées", "ministère des Armées", "French Armed Forces Ministry", "French defence ministry", "French MoD"]
+country = "FR"
+sector = "DEFENSE"
+
+[[entity]]
+id = "nato"
+name = "NATO"
+type = "organization"
+aliases = ["OTAN", "North Atlantic Treaty Organization"]
+country = "INT"
+sector = "DEFENSE"
+
+[[entity]]
+id = "eu-commission"
+name = "European Commission"
+type = "organization"
+aliases = ["Commission européenne", "EU Commission", "DG DEFIS"]
+country = "EU"
+sector = "MULTI"
+
+[[entity]]
+id = "eda"
+name = "European Defence Agency"
+type = "organization"
+aliases = ["EDA"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "euspa"
+name = "EUSPA"
+type = "organization"
+aliases = ["EU Agency for the Space Programme"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "bundeswehr"
+name = "Bundeswehr"
+type = "organization"
+aliases = ["BAAINBw", "German armed forces"]
+country = "DE"
+sector = "DEFENSE"
+
+[[entity]]
+id = "us-dod"
+name = "US Department of Defense"
+type = "organization"
+aliases = ["Pentagon", "DoD", "Department of Defense"]
+country = "US"
+sector = "DEFENSE"
+
+[[entity]]
+id = "uk-mod"
+name = "UK Ministry of Defence"
+type = "organization"
+aliases = ["MoD", "British Ministry of Defence"]
+country = "GB"
+sector = "DEFENSE"
+
+[[entity]]
+id = "mofcom"
+name = "China Ministry of Commerce"
+type = "organization"
+aliases = ["MOFCOM", "Chinese commerce ministry", "China's Ministry of Commerce", "China's commerce ministry"]
+country = "CN"
+sector = "MULTI"
+
+[[entity]]
+id = "polish-mod"
+name = "Polish Ministry of National Defence"
+type = "organization"
+aliases = ["Polish defence ministry", "Polish Armed Forces"]
+country = "PL"
+sector = "DEFENSE"
+
+# ------------------------------------------------------------------ programmes (products folded in)
+[[entity]]
+id = "ariane-6"
+name = "Ariane 6"
+type = "programme"
+aliases = ["Ariane-6", "Ariane 64", "Ariane 62"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "vega-c"
+name = "Vega C"
+type = "programme"
+aliases = ["Vega-C"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "launcher-challenge"
+name = "European Launcher Challenge"
+type = "programme"
+aliases = ["ESA Launcher Challenge", "Launcher Challenge"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "space-rider"
+name = "Space Rider"
+type = "programme"
+aliases = []
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "iris2"
+name = "IRIS²"
+type = "programme"
+aliases = ["IRIS2", "IRIS 2"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "galileo"
+name = "Galileo"
+type = "programme"
+aliases = ["Galileo Second Generation", "G2G"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "copernicus"
+name = "Copernicus"
+type = "programme"
+aliases = ["Sentinel"]
+country = "EU"
+sector = "SPACE"
+
+[[entity]]
+id = "fcas"
+name = "FCAS"
+type = "programme"
+aliases = ["SCAF", "Future Combat Air System", "NGWS"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "gcap"
+name = "GCAP"
+type = "programme"
+aliases = ["Global Combat Air Programme"]
+country = "INT"
+sector = "DEFENSE"
+
+[[entity]]
+id = "eurodrone"
+name = "Eurodrone"
+type = "programme"
+aliases = ["MALE RPAS"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "essi"
+name = "European Sky Shield Initiative"
+type = "programme"
+aliases = ["ESSI", "Sky Shield"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "samp-t"
+name = "SAMP/T NG"
+type = "programme"
+aliases = ["SAMP/T"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "edf"
+name = "European Defence Fund"
+type = "programme"
+aliases = ["Fonds européen de la défense"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "edip"
+name = "EDIP"
+type = "programme"
+aliases = ["European Defence Industry Programme"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "a400m"
+name = "A400M"
+type = "programme"
+aliases = ["A400M Atlas"]
+country = "EU"
+sector = "DEFENSE"
+
+[[entity]]
+id = "rafale"
+name = "Rafale"
+type = "programme"
+aliases = []
+country = "FR"
+sector = "DEFENSE"
+
+[[entity]]
+id = "f-35"
+name = "F-35"
+type = "programme"
+aliases = ["F-35A", "F-35 Lightning II"]
+country = "US"
+sector = "DEFENSE"
+
+[[entity]]
+id = "a320"
+name = "A320 family"
+type = "programme"
+aliases = ["A320neo", "A321neo", "A320", "A321XLR"]
+country = "EU"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "a350"
+name = "A350"
+type = "programme"
+aliases = ["A350F", "A350-1000"]
+country = "EU"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "falcon-10x"
+name = "Falcon 10X"
+type = "programme"
+aliases = ["Falcon 6X"]
+country = "FR"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "global-8000"
+name = "Global 8000"
+type = "programme"
+aliases = ["Global 7500"]
+country = "CA"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "g700"
+name = "Gulfstream G700"
+type = "programme"
+aliases = ["G700", "G800"]
+country = "US"
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "ground-master"
+name = "Ground Master radar"
+type = "programme"
+aliases = ["Ground Master 400", "GM400", "Ground Master"]
+country = "FR"
+sector = "DEFENSE"
+
+# ------------------------------------------------------------------ technologies
+[[entity]]
+id = "hypersonic"
+name = "Hypersonic systems"
+type = "technology"
+aliases = ["hypersonic", "hypersonique", "hypersoniques", "hypersonic glide vehicle", "glide vehicle", "HGV"]
+sector = "DEFENSE"
+
+[[entity]]
+id = "counter-uas"
+name = "Counter-UAS"
+type = "technology"
+aliases = ["counter-UAS", "C-UAS", "counter-drone", "counter drone", "anti-drone", "lutte anti-drones", "anti-drones", "lutte anti-drone", "drone defence", "counter-unmanned aircraft"]
+sector = "DEFENSE"
+
+[[entity]]
+id = "drones"
+name = "Drones (UAS)"
+type = "technology"
+aliases = ["drone", "drones", "UAV", "UAVs", "UAS", "loitering munition", "loitering munitions", "unmanned aerial"]
+sector = "DEFENSE"
+
+[[entity]]
+id = "air-defence"
+name = "Air and missile defence"
+type = "technology"
+aliases = ["air defence", "air defense", "missile defence", "missile defense", "interceptor", "interceptors", "défense aérienne", "intercepteur"]
+sector = "DEFENSE"
+
+[[entity]]
+id = "reusable-launch"
+name = "Reusable launch"
+type = "technology"
+aliases = ["reusable launcher", "reusable rocket", "reusable first stage", "réutilisable", "reusability"]
+sector = "SPACE"
+
+[[entity]]
+id = "rocket-engine"
+name = "Rocket engines"
+type = "technology"
+aliases = ["rocket engine", "hot-fire", "hot fire", "methalox", "Prometheus engine", "upper stage engine"]
+sector = "SPACE"
+
+[[entity]]
+id = "solid-rocket-motor"
+name = "Solid rocket motors"
+type = "technology"
+aliases = ["solid rocket motor", "solid rocket motors", "solid propellant", "propulsion solide"]
+sector = "DEFENSE"
+
+[[entity]]
+id = "electric-propulsion"
+name = "Electric propulsion"
+type = "technology"
+aliases = ["electric propulsion", "Hall thruster", "Hall-effect thruster", "propulsion électrique", "effet Hall", "propulseur à effet Hall"]
+sector = "SPACE"
+
+[[entity]]
+id = "sar-imaging"
+name = "SAR imaging"
+type = "technology"
+aliases = ["synthetic aperture radar", "SAR satellite", "SAR satellites", "radar imaging satellite"]
+sector = "SPACE"
+
+[[entity]]
+id = "leo-constellation"
+name = "LEO constellations"
+type = "technology"
+aliases = ["LEO constellation", "low Earth orbit constellation", "megaconstellation", "satellite constellation"]
+sector = "SPACE"
+
+[[entity]]
+id = "satcom"
+name = "Satellite communications"
+type = "technology"
+aliases = ["satcom", "secure connectivity", "telecommunications satellite", "navigation satellite", "navigation satellites"]
+sector = "SPACE"
+
+[[entity]]
+id = "qkd"
+name = "Quantum key distribution"
+type = "technology"
+aliases = ["quantum key distribution", "QKD", "quantum communication", "quantum sensing"]
+sector = "MULTI"
+
+[[entity]]
+id = "ai"
+name = "Artificial intelligence"
+type = "technology"
+aliases = ["artificial intelligence", "AI", "machine learning", "reinforcement learning", "intelligence artificielle", "deep learning"]
+sector = "MULTI"
+
+[[entity]]
+id = "gan-semiconductors"
+name = "GaN semiconductors"
+type = "technology"
+aliases = ["gallium nitride", "GaN", "radar chips", "power amplifiers", "semiconductor", "semiconductors"]
+sector = "MULTI"
+
+[[entity]]
+id = "radar"
+name = "Radar"
+type = "technology"
+aliases = ["radar", "radars", "AESA"]
+sector = "DEFENSE"
+
+[[entity]]
+id = "business-jets"
+name = "Business jets"
+type = "technology"
+aliases = ["business jet", "business jets", "business aviation", "bizjet", "bizjets", "large-cabin jet"]
+sector = "AERONAUTICS"
+
+[[entity]]
+id = "saf"
+name = "Sustainable aviation fuel"
+type = "technology"
+aliases = ["sustainable aviation fuel", "SAF"]
+sector = "AERONAUTICS"
+
+# ------------------------------------------------------------------ critical materials
+[[entity]]
+id = "gallium"
+name = "Gallium"
+type = "material"
+aliases = ["gallium"]
+sector = "MULTI"
+
+[[entity]]
+id = "germanium"
+name = "Germanium"
+type = "material"
+aliases = ["germanium"]
+sector = "MULTI"
+
+[[entity]]
+id = "rare-earths"
+name = "Rare earths"
+type = "material"
+aliases = ["rare earths", "rare-earth", "rare earth", "terres rares"]
+sector = "MULTI"
+
+[[entity]]
+id = "titanium"
+name = "Titanium"
+type = "material"
+aliases = ["titanium", "titane"]
+sector = "MULTI"
+
+# ------------------------------------------------------------------ countries and regions
+[[entity]]
+id = "country-fr"
+name = "France"
+type = "country"
+aliases = ["French", "française", "français", "Française"]
+country = "FR"
+
+[[entity]]
+id = "country-de"
+name = "Germany"
+type = "country"
+aliases = ["German", "Allemagne", "allemand", "allemande"]
+country = "DE"
+
+[[entity]]
+id = "country-it"
+name = "Italy"
+type = "country"
+aliases = ["Italian", "Italie", "italien"]
+country = "IT"
+
+[[entity]]
+id = "country-es"
+name = "Spain"
+type = "country"
+aliases = ["Spanish", "Espagne"]
+country = "ES"
+
+[[entity]]
+id = "country-gb"
+name = "United Kingdom"
+type = "country"
+aliases = ["UK", "Britain", "British", "Royaume-Uni"]
+country = "GB"
+
+[[entity]]
+id = "country-us"
+name = "United States"
+type = "country"
+aliases = ["US", "U.S.", "USA", "American", "États-Unis"]
+country = "US"
+
+[[entity]]
+id = "country-cn"
+name = "China"
+type = "country"
+aliases = ["Chinese", "Chine", "Beijing"]
+country = "CN"
+
+[[entity]]
+id = "country-pl"
+name = "Poland"
+type = "country"
+aliases = ["Polish", "Pologne"]
+country = "PL"
+
+[[entity]]
+id = "country-be"
+name = "Belgium"
+type = "country"
+aliases = ["Belgian", "Belgique"]
+country = "BE"
+
+[[entity]]
+id = "country-nl"
+name = "Netherlands"
+type = "country"
+aliases = ["Dutch", "Pays-Bas"]
+country = "NL"
+
+[[entity]]
+id = "country-se"
+name = "Sweden"
+type = "country"
+aliases = ["Swedish", "Suède"]
+country = "SE"
+
+[[entity]]
+id = "country-no"
+name = "Norway"
+type = "country"
+aliases = ["Norwegian", "Norvège"]
+country = "NO"
+
+[[entity]]
+id = "country-fi"
+name = "Finland"
+type = "country"
+aliases = ["Finnish", "Finlande"]
+country = "FI"
+
+[[entity]]
+id = "country-dk"
+name = "Denmark"
+type = "country"
+aliases = ["Danish", "Danemark"]
+country = "DK"
+
+[[entity]]
+id = "country-ua"
+name = "Ukraine"
+type = "country"
+aliases = ["Ukrainian", "ukrainien"]
+country = "UA"
+
+[[entity]]
+id = "country-ru"
+name = "Russia"
+type = "country"
+aliases = ["Russian", "Russie"]
+country = "RU"
+
+[[entity]]
+id = "country-in"
+name = "India"
+type = "country"
+aliases = ["Indian", "Inde"]
+country = "IN"
+
+[[entity]]
+id = "country-jp"
+name = "Japan"
+type = "country"
+aliases = ["Japanese", "Japon"]
+country = "JP"
+
+[[entity]]
+id = "country-ca"
+name = "Canada"
+type = "country"
+aliases = ["Canadian"]
+country = "CA"
+
+[[entity]]
+id = "country-tr"
+name = "Türkiye"
+type = "country"
+aliases = ["Turkey", "Turkish", "Turquie"]
+country = "TR"
+
+[[entity]]
+id = "country-lu"
+name = "Luxembourg"
+type = "country"
+aliases = []
+country = "LU"
+
+[[entity]]
+id = "region-eu"
+name = "European Union"
+type = "region"
+aliases = ["EU", "Union européenne", "UE"]
+country = "EU"

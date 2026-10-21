@@ -1,0 +1,60 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon %}
+{% block title %}Conditions d'utilisation{% endblock %}
+{% block content %}
+<div class="page page--narrow legal">
+  <header class="page__head">
+    <h1>Conditions d'utilisation</h1>
+    <p>Version du [date de publication].</p>
+  </header>
+
+  <p class="notice notice--draft">{{ icon("alert") }}<span><b>Projet à compléter et à faire relire.</b> Ce texte est un premier jet : remplacez les passages entre crochets et faites-le valider par un juriste avant toute mise en ligne publique.</span></p>
+
+  <section>
+    <h2>1. Objet</h2>
+    <p>Space Intelligence est un service de veille sur les secteurs du spatial et de la défense, édité par [nom de l'éditeur, statut, adresse]. Il rassemble des informations publiques, les regroupe par événement et renvoie systématiquement vers les sources d'origine. Utiliser le site vaut acceptation des présentes conditions.</p>
+  </section>
+
+  <section>
+    <h2>2. Accès au service</h2>
+    <p>Le site est accessible gratuitement, sans création de compte. L'éditeur peut suspendre ou modifier le service à tout moment, notamment pour maintenance, sans obligation de préavis.</p>
+  </section>
+
+  <section>
+    <h2>3. Nature des contenus</h2>
+    <p>Les contenus sont produits automatiquement à partir de sources publiques : flux de presse, institutions, publications scientifiques et agrégateurs. Plus précisément :</p>
+    <ul>
+      <li>les événements regroupent des articles qui traitent d'un même fait ;</li>
+      <li>les résumés sont composés de phrases extraites des articles et, le cas échéant, traduites automatiquement de l'anglais ;</li>
+      <li>les scores d'importance, de crédibilité et de nouveauté, ainsi que les tendances, sont des indicateurs calculés par des règles. Ce ne sont ni des avis ni des recommandations.</li>
+    </ul>
+    <p>Aucun contenu n'est relu par une personne avant publication.</p>
+  </section>
+
+  <section>
+    <h2>4. Absence de garantie</h2>
+    <p>Les informations sont fournies telles quelles, à titre indicatif. Elles peuvent être incomplètes, inexactes ou dépassées, et une traduction automatique peut altérer le sens d'une phrase. Vérifiez toute information importante dans la source d'origine avant de vous en servir. L'éditeur ne pourra être tenu responsable d'une décision prise sur la base du site.</p>
+  </section>
+
+  <section>
+    <h2>5. Propriété intellectuelle et sources</h2>
+    <p>Les articles, titres et extraits restent la propriété de leurs éditeurs respectifs ; chaque contenu affiché cite sa source et renvoie vers l'article complet. Un éditeur qui ne souhaite pas voir ses contenus repris peut demander leur retrait à [adresse de contact] : la demande est traitée dans un délai de [N] jours ouvrés.</p>
+    <p>La présentation du site, ses textes propres et son code sont la propriété de [nom de l'éditeur].</p>
+  </section>
+
+  <section>
+    <h2>6. Données personnelles</h2>
+    <p>Le site ne demande aucune inscription et n'utilise pas de cookie de mesure d'audience ni de publicité. Les journaux techniques du serveur (adresse IP, pages consultées) sont conservés [durée] à des fins de sécurité. Pour toute question ou pour exercer vos droits, écrivez à [adresse de contact].</p>
+  </section>
+
+  <section>
+    <h2>7. Modification des conditions</h2>
+    <p>Ces conditions peuvent évoluer. La version en vigueur est celle publiée sur cette page, avec sa date.</p>
+  </section>
+
+  <section>
+    <h2>8. Droit applicable et contact</h2>
+    <p>Les présentes conditions sont soumises au droit français. Contact : [adresse de contact].</p>
+  </section>
+</div>
+{% endblock %}

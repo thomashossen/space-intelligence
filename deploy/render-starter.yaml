@@ -1,0 +1,33 @@
+# Alternative (paid, ~7 $/month): one Render Starter service with a persistent disk does everything,
+# no GitHub Actions needed. To use it, copy this file over render.yaml.
+# Render Blueprint: one web service with a persistent disk.
+# Render → New → Blueprint → pick this repository. Adjust region, plan and disk size if needed.
+services:
+  - type: web
+    name: space-intelligence
+    runtime: python
+    plan: starter                 # a Free instance cannot keep a disk: its database would vanish at every sleep
+    region: frankfurt
+    branch: main
+    autoDeployTrigger: commit     # every git push to main redeploys; the data on the disk stays
+    buildCommand: pip install -r requirements.txt && pip install ctranslate2 sentencepiece
+    # The disk is only mounted at run time: the translation model (~100 MB) is fetched on the first start.
+    # ";" rather than "&&": if that download fails, the site still starts (only the French briefs wait).
+    # No --proxy-headers: a visitor could forge X-Forwarded-For and pass for the host machine.
+    startCommand: python -m app.pipeline translator install --if-missing; python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: SECTOR_INTEL_DATA_DIR      # database and translation model on the persistent disk
+        value: /var/data
+      - key: SECTOR_INTEL_REFRESH       # anyone may press "Actualiser"…
+        value: open
+      - key: SECTOR_INTEL_REFRESH_COOLDOWN   # …at most once every 15 minutes, for the whole site
+        value: "900"
+      - key: SECTOR_INTEL_REDACTION_PROVIDER # French briefs, offline, no account
+        value: local

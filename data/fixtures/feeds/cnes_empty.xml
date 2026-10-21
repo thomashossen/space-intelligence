@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — valid feed with no entries: must be reported as EMPTY_FEED, not as an error. -->
+<rss version="2.0">
+<channel>
+<title>CNES actualités (fixture)</title>
+<link>https://cnes.example/</link>
+<description>Flux vide de test.</description>
+<language>fr</language>
+</channel>
+</rss>

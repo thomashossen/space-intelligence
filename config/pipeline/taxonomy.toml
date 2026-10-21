@@ -1,0 +1,133 @@
+# Multi-label classification taxonomy.
+#
+# A label is assigned when its score reaches `threshold` (default [settings].threshold).
+#   score = title_weight × keyword hits in the title
+#         + body_weight  × keyword hits in summary/content (counted once per keyword)
+#         + entity_weight × matching entities (ids, or "type:<entity type>")
+# Every assigned label stores the keywords and entities that triggered it (evidence).
+# kind = "sector" labels fill the `sectors` field; the others fill `topics`.
+# Adding a category = adding a block. Keywords are lowercase, matched on word
+# boundaries; a trailing "*" allows any suffix (launch* → launches, launched).
+
+version = "1.0.0"
+
+[settings]
+threshold = 2
+title_weight = 2
+body_weight = 1
+entity_weight = 2
+
+[category.AERONAUTICS]
+kind = "sector"
+keywords = ["aircraft", "airliner*", "aviation", "airframe*", "jet engine*", "business jet*", "turbofan*", "avion*", "aéronautique", "helicopter*", "certification", "airline*"]
+entities = ["airbus", "boeing", "safran", "rolls-royce", "ge-aerospace", "pratt-whitney", "embraer", "bombardier", "gulfstream", "textron", "a320", "a350", "falcon-10x", "global-8000", "g700", "business-jets", "saf"]
+
+[category.SPACE]
+kind = "sector"
+keywords = ["space", "satellite*", "orbit*", "launch vehicle*", "launcher*", "spaceport", "spatial*", "spatiale", "lanceur*", "spacecraft"]
+entities = ["type:programme:SPACE", "esa", "nasa", "cnes", "dlr", "euspa", "arianespace", "arianegroup", "maiaspace", "isar", "rfa", "rocket-lab", "spacex", "ohb", "thales-alenia-space", "avio", "exploration-company", "eutelsat", "ses"]
+
+[category.DEFENSE]
+kind = "sector"
+keywords = ["defence", "defense", "military", "armed forces", "army", "air force", "navy", "armée*", "défense", "missile*", "munition*", "weapon*", "procurement agency"]
+entities = ["type:programme:DEFENSE", "mbda", "thales", "leonardo", "airbus-ds", "indra", "kongsberg", "helsing", "quantum-systems", "anduril", "radar", "rheinmetall", "knds", "bae", "lockheed", "rtx", "raytheon", "northrop", "saab", "hensoldt", "diehl", "naval-group", "nato", "eda", "dga", "fr-minarm", "us-dod", "uk-mod", "bundeswehr", "polish-mod", "counter-uas", "air-defence", "hypersonic"]
+
+[category.CYBER]
+kind = "topic"
+keywords = ["cyber*", "ransomware", "intrusion", "cyberattack*", "cybersécurité"]
+entities = []
+
+[category.DRONES]
+kind = "topic"
+keywords = ["drone*", "uav*", "unmanned", "loitering", "counter-drone", "anti-drone*"]
+entities = ["drones", "counter-uas", "eurodrone", "quantum-systems", "helsing", "anduril"]
+
+[category.MISSILES]
+kind = "topic"
+keywords = ["missile*", "interceptor*", "intercepteur*", "glide vehicle*", "hypersonic*", "hypersonique*"]
+entities = ["hypersonic", "air-defence", "mbda", "samp-t", "essi", "solid-rocket-motor"]
+
+[category.SATELLITES]
+kind = "topic"
+keywords = ["satellite*", "constellation*", "payload*", "earth observation", "spacecraft"]
+entities = ["leo-constellation", "sar-imaging", "satcom", "iris2", "galileo", "copernicus", "thales-alenia-space", "ohb", "eutelsat", "ses"]
+
+[category.LAUNCHERS]
+kind = "topic"
+keywords = ["launcher*", "launch vehicle*", "lift-off", "liftoff", "lanceur*", "rocket*", "maiden flight", "launch pad"]
+entities = ["ariane-6", "vega-c", "launcher-challenge", "arianespace", "maiaspace", "isar", "rfa", "rocket-lab", "spacex", "avio", "reusable-launch", "rocket-engine"]
+
+[category.PROPULSION]
+kind = "topic"
+keywords = ["propulsion", "thruster*", "engine test*", "hot-fire", "turbofan*", "propulseur*", "combustion"]
+entities = ["electric-propulsion", "rocket-engine", "solid-rocket-motor", "safran", "rolls-royce", "pratt-whitney", "ge-aerospace"]
+
+[category.AI]
+kind = "topic"
+keywords = ["artificial intelligence", "machine learning", "neural network*", "reinforcement learning", "autonomy", "autonomous", "intelligence artificielle"]
+entities = ["ai", "helsing"]
+
+[category.QUANTUM]
+kind = "topic"
+keywords = ["quantum", "quantique"]
+entities = ["qkd"]
+
+[category.SEMICONDUCTORS]
+kind = "topic"
+keywords = ["semiconductor*", "chip*", "gallium nitride", "wafer*", "foundry", "semi-conducteur*"]
+entities = ["gan-semiconductors", "gallium", "germanium"]
+
+[category.SUPPLY_CHAIN]
+kind = "topic"
+keywords = ["supply chain*", "supplier*", "shortage*", "stockpil*", "critical raw material*", "bottleneck*", "lead time*", "approvisionnement*", "pénurie*", "raw material*"]
+entities = ["gallium", "germanium", "rare-earths", "titanium"]
+
+[category.ENERGY]
+kind = "topic"
+keywords = ["energy", "hydrogen", "battery", "batteries", "fuel", "énergie"]
+entities = ["saf"]
+
+[category.REGULATION]
+kind = "topic"
+keywords = ["regulation*", "directive", "legislation", "work programme", "call for proposals", "règlement*", "law", "framework"]
+entities = ["edip"]
+
+[category.GEOPOLITICS]
+kind = "topic"
+keywords = ["sanction*", "tension*", "sovereignty", "souveraineté", "alliance", "summit", "deterrence", "dissuasion", "geopolitic*", "géopolitique"]
+entities = ["nato", "region-eu", "country-cn", "country-ru", "country-ua", "essi"]
+
+[category.EXPORT_CONTROL]
+kind = "topic"
+keywords = ["export control*", "export licen*", "export restriction*", "export ban*", "embargo*", "itar", "contrôle des exportations", "dual-use"]
+entities = ["mofcom"]
+
+[category."M&A"]
+kind = "topic"
+keywords = ["acquisition", "acquire*", "merger*", "takeover", "rachat", "fusion", "stake"]
+entities = []
+
+[category.CAPEX]
+kind = "topic"
+keywords = ["factory", "plant", "production capacity", "production line*", "ramp-up", "ramp up", "usine*", "capacité de production", "investment", "invest*"]
+entities = []
+
+[category."R&D"]
+kind = "topic"
+keywords = ["research", "study", "prototype*", "demonstrator*", "we propose", "paper", "experiment*", "recherche", "étude", "démonstrateur*", "test campaign"]
+entities = ["type:research_source"]
+
+# ------------------------------------------------------------------ event types
+# Ordered: on equal hit counts, the first listed wins. "other" when nothing matches.
+[event_types]
+contract = ["contract*", "award*", "order*", "selects", "selected", "picks", "chosen", "chooses", "wins", "won", "commande*", "contrat*", "notif*"]
+launch = ["launch", "launches", "launched", "lift-off", "liftoff", "lancement", "lifted off", "placed into orbit"]
+test = ["test", "tests", "tested", "hot-fire", "trial*", "demonstration", "exercise", "essai*", "flight test*"]
+delivery = ["deliver*", "handover", "livraison*", "livre", "handed over"]
+partnership = ["partnership", "partners with", "teams up", "agreement", "memorandum", "mou", "partenariat", "accord", "cooperation"]
+acquisition = ["acquire*", "acquisition", "takeover", "merger", "rachat"]
+investment = ["invest*", "funding", "raises", "factory", "plant", "production capacity", "usine", "capex", "ramp-up"]
+regulation = ["regulation", "directive", "work programme", "call for proposals", "legislation", "règlement"]
+export_control = ["export control*", "export licen*", "export restriction*", "embargo", "export ban"]
+schedule_change = ["delay*", "postpone*", "slip*", "rescheduled", "retard*", "report du"]
+research = ["paper", "we propose", "we present", "study", "abstract", "preprint", "article scientifique"]

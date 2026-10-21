@@ -1,0 +1,58 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon %}
+{% macro tile(t, big=False) -%}
+<a class="ttile ttile--{{ t.mood }}{% if big %} ttile--big{% endif %}" href="/actualites?theme={{ t.code|urlencode }}">
+  <span class="ttile__top"><span class="ttile__icon">{{ icon(t.icon) }}</span><span class="ttile__name">{{ t.label }}</span></span>
+  <span class="ttile__row">
+    <span class="ttile__num"><b>{{ t.current }}</b> en 7&nbsp;jours</span>
+    <span class="badge badge--{{ t.mood }}" title="{{ t.word }}">{{ t.word if big else t.short }}</span>
+  </span>
+  <span class="ttile__avg">moyenne {{ t.baseline_txt }} par semaine</span>
+  <svg class="ttile__spark" viewBox="0 0 {{ t.spark.w }} {{ t.spark.h }}" preserveAspectRatio="none" role="img" aria-label="Événements par semaine sur 12 semaines : {{ t.series|join(', ') }}">
+    <polygon points="{{ t.spark.area }}"/><polyline points="{{ t.spark.line }}"/><circle cx="{{ t.spark.last[0] }}" cy="{{ t.spark.last[1] }}" r="2.6"/>
+  </svg>
+</a>
+{%- endmacro %}
+{% block title %}Tendances{% endblock %}
+{% block content %}
+<div class="page">
+  <header class="page__head">
+    <h1>Tendances</h1>
+    <p>Événements des 7 derniers jours par thème, comparés à la moyenne des semaines précédentes. Un article repris dix fois compte pour un. Cliquez sur un thème pour lire ses événements.</p>
+  </header>
+
+  {% if sectors %}
+  <section aria-labelledby="sec-title" class="tsection">
+    <h2 id="sec-title" class="tsection__h">Secteurs</h2>
+    <div class="tgrid tgrid--sectors">{% for t in sectors %}{{ tile(t, True) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <section aria-labelledby="top-title" class="tsection">
+    <h2 id="top-title" class="tsection__h">Thèmes</h2>
+    {% if topics %}<div class="tgrid">{% for t in topics %}{{ tile(t) }}{% endfor %}</div>
+    {% else %}<p class="empty">Pas encore d'événements classés.</p>{% endif %}
+  </section>
+
+  {% if weeks_needed %}
+  <p class="notice notice--info">{{ icon("clock") }}<span>Les signaux statistiques demandent 8 semaines d'historique. Il en manque {{ weeks_needed }} : continuez à lancer la collecte régulièrement.</span></p>
+  {% endif %}
+
+  {% if signals %}
+  <section class="panel tsection" aria-labelledby="sig-title">
+    <h2 id="sig-title">Signaux détectés</h2>
+    <p class="tsection__lead">Écarts statistiques par rapport aux 12 semaines précédentes. Un signal est une observation, pas une prévision.</p>
+    <ul class="signals">
+      {% for s in signals %}
+      <li class="signal signal--{{ 'up' if s.up else 'down' }}">
+        <p><span class="badge badge--{{ 'up' if s.up else 'down' }}">{{ s.kind }}</span>
+          <b>{% if s.href %}<a href="{{ s.href }}">{{ s.subject }}</a>{% else %}{{ s.subject }}{% endif %}</b>
+          <small>{{ s.current }} cette semaine, {{ s.baseline }} en moyenne. Confiance {{ s.confidence }}.</small></p>
+        {% if s.evidence %}<ul>{% for ev in s.evidence %}<li><a href="/evenements/{{ ev.event_id }}">{{ ev.title }}</a></li>{% endfor %}</ul>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

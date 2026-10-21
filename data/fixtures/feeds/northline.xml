@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS publication and content. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Northline Defence Monitor (fixture)</title>
+<link>https://northline-defence.example/</link>
+<description>Invented defence publication. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>French procurement agency orders 40 counter-drone systems from MBDA</title>
+<link>https://northline-defence.example/2026/10/french-dga-orders-counter-drone-systems-mbda</link>
+<guid isPermaLink="false">today-mbda-northline</guid>
+<pubDate>Tue, 06 Oct 2026 13:00:00 +0200</pubDate>
+<description>France's DGA has placed an order with MBDA for 40 mobile counter-drone systems, according to the French Ministry of the Armed Forces.</description>
+<content:encoded><![CDATA[<p>France's DGA has placed an order with MBDA for 40 mobile counter-drone systems, according to the French Ministry of the Armed Forces.</p><p>The counter-UAS order follows trials earlier this year. Deliveries are due in 2027.</p>]]></content:encoded>
+</item>
+<item>
+<title>NATO counter-drone exercise draws record participation</title>
+<link>https://northline-defence.example/2026/10/nato-counter-drone-exercise-record</link>
+<guid isPermaLink="false">today-nato-northline</guid>
+<pubDate>Tue, 06 Oct 2026 09:00:00 +0200</pubDate>
+<description>NATO's counter-drone interoperability exercise brought together systems from 12 nations, a record for the event.</description>
+<content:encoded><![CDATA[<p>NATO's counter-drone interoperability exercise brought together systems from 12 nations, a record for the event.</p><p>Participants tested detection and defeat of small drones in shared scenarios.</p>]]></content:encoded>
+</item>
+<item>
+<title>Hypersonic interceptor study wins European Defence Fund backing</title>
+<link>https://northline-defence.example/2026/10/hypersonic-interceptor-edf</link>
+<guid isPermaLink="false">today-hyp-northline</guid>
+<pubDate>Mon, 05 Oct 2026 18:00:00 +0200</pubDate>
+<description>A European study on interceptors against hypersonic glide vehicles will be funded by the European Defence Fund, with MBDA taking part.</description>
+<content:encoded><![CDATA[<p>A European study on interceptors against hypersonic glide vehicles will be funded by the European Defence Fund, with MBDA taking part.</p><p>The work covers guidance and propulsion for the interceptor.</p>]]></content:encoded>
+</item>
+</channel>
+</rss>

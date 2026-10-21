@@ -1,0 +1,165 @@
+# Scoring, deduplication, clustering and signal rules.
+#
+# Every score is a sum (or weighted sum) of named components, stored with the item or
+# event so the "why" can be shown without recomputing. Scores RANK items: they are not
+# probabilities. Changing any value here changes `rules_version` (hash of config files),
+# which is recorded on every processed row and every run.
+
+version = "1.0.0"
+
+# ------------------------------------------------------------------ deduplication
+# Duplicate = the same document or the same text reprinted (syndication, reposts,
+# URL variants). Duplicates share a duplicate_group_id, which IS the "origin" of the
+# proof line. Deduplication runs before any corroboration count.
+[dedup]
+window_hours = 72                 # level 4: temporal proximity required by levels 2 and 3
+title_jaccard = 0.80              # level 2: word Jaccard on normalised titles
+title_trigram = 0.85              # level 2: character-trigram Jaccard (catches small edits)
+content_cosine = 0.85             # level 3: TF-IDF cosine on cleaned content
+embedding_cosine = 0.90           # level 3 when an embedder is enabled
+min_content_chars = 200           # exact content hash only above this length
+same_title_min_content_cosine = 0.7   # same headline + both texts long + cosine below this = independent coverage, not a copy
+
+# ------------------------------------------------------------------ event clustering
+# Event = several origins reporting the same fact. Origin heads are compared
+# (never raw copies), within window_hours, if they share a non-country entity.
+[events]
+window_hours = 72
+threshold = 0.42                  # similarity = w_text·tfidf + w_entities·Jaccard + w_title·Jaccard
+w_text = 0.45
+w_entities = 0.35
+w_title = 0.20
+mean_link_ratio = 0.75            # mean similarity to the cluster must reach threshold × ratio
+different_type_threshold = 0.60   # stricter when both event types are known and differ, or when the
+                                  # two items name disjoint companies, programmes or countries
+cross_language_entity_jaccard = 0.60   # FR↔EN: entity-based, same event type, ≥ 2 shared entities
+cross_language_min_shared = 2
+
+# ------------------------------------------------------------------ credibility (0-100)
+# credibility = source_reliability + primary_source_bonus + corroboration_bonus
+#             + temporal_consistency − contradiction_penalty
+[credibility]
+reliability_points = 50           # × baseline credibility of the source (0..1)
+primary_bonus = 15                # the actor or the authority itself published it
+corroboration_per_origin = 8      # per independent origin beyond the first
+corroboration_per_family = 4      # per source family beyond the first
+corroboration_max = 25
+temporal_points = 10              # × share of origins with a reliable date inside the window
+contradiction_penalty = 15        # per numeric contradiction between origins
+contradiction_max = 30
+
+[credibility.tier_baseline]
+1 = 0.90
+2 = 0.75
+3 = 0.55
+4 = 0.30
+
+[credibility.family_label]
+INS = "institutional"
+IND = "industrial"
+PRS = "specialised press"
+AGG = "aggregator"
+VID = "official video"
+RES = "research"
+
+# ------------------------------------------------------------------ importance (0-100)
+# Five components, each 0-100, weighted.
+[importance]
+reliability = 0.15                # best baseline credibility among origins × 100
+origins = 0.20                    # 20 + 20 per independent origin, capped at 100
+relevance = 0.20                  # sector relevance from the taxonomy
+recency = 0.15                    # half-life below, relative to the run's as-of time
+impact = 0.30                     # strategic score
+recency_half_life_hours = 24
+priority_threshold = 65
+
+[relevance]
+per_sector = 30                   # per A&D sector label (max 2 counted)
+per_topic = 10                    # per topic label (max 4 counted)
+
+# ------------------------------------------------------------------ novelty (0-100)
+# Computed per EVENT. Reprints add nothing; a duplicate item gets novelty 0.
+[novelty]
+new_topic = 20                    # a topic whose weekly baseline was below new_topic_baseline
+new_topic_baseline = 0.5
+new_actor = 25                    # a company/organisation never seen before in the window
+new_technology = 15               # a technology/material never seen before
+new_relation = 15                 # a pair of entities never linked before
+frequency_change_per_z = 5        # × max positive z-score of the event's subjects
+frequency_change_max = 20
+dissimilarity_points = 20         # × (1 − max TF-IDF similarity to earlier events, 90 days)
+lookback_days = 90
+
+# ------------------------------------------------------------------ strategic (0-100)
+# Five components, each 0-100 from rules, combined with the weights below.
+[strategic]
+weights = { geopolitical = 0.25, industrial = 0.25, technological = 0.20, supply_chain = 0.15, sovereignty = 0.15 }
+
+[strategic.geopolitical]
+categories = { GEOPOLITICS = 45, EXPORT_CONTROL = 35, DEFENSE = 15 }
+entities = { nato = 20, region-eu = 10, country-cn = 15, country-ru = 15, country-ua = 15, mofcom = 20 }
+per_extra_country = 10
+event_types = { export_control = 20 }
+
+[strategic.industrial]
+categories = { "M&A" = 40, CAPEX = 35, AERONAUTICS = 10, DEFENSE = 10, SPACE = 10 }
+event_types = { contract = 40, delivery = 25, acquisition = 45, investment = 35, partnership = 20 }
+per_company = 8
+
+[strategic.technological]
+categories = { "R&D" = 25, AI = 25, QUANTUM = 30, PROPULSION = 20, SEMICONDUCTORS = 20, MISSILES = 15 }
+entity_types = { technology = 12 }
+event_types = { test = 25, research = 20, launch = 20 }
+
+[strategic.supply_chain]
+categories = { SUPPLY_CHAIN = 50, SEMICONDUCTORS = 20, EXPORT_CONTROL = 25 }
+entity_types = { material = 25 }
+
+[strategic.sovereignty]
+categories = { EXPORT_CONTROL = 25, GEOPOLITICS = 15, LAUNCHERS = 15 }
+entities = { region-eu = 15, eu-commission = 15, esa = 10, edf = 20, edip = 20, iris2 = 25, launcher-challenge = 25, ariane-6 = 15, fcas = 20, essi = 20 }
+keywords = ["sovereign*", "souverain*", "autonomous access", "strategic autonomy", "independence"]
+keyword_points = 25
+
+# ------------------------------------------------------------------ data quality (0-100)
+# Quality of the RECORD (completeness, consistency), not truth. Separate from credibility.
+[data_quality]
+title = 15
+content = 20                      # full points at ≥ 400 chars of cleaned content, half at ≥ 120
+reliable_date = 20
+known_language = 10
+author = 5
+canonical_url = 10
+entities = 10
+classified = 10
+
+# ------------------------------------------------------------------ signals
+# Weekly counts of DISTINCT EVENTS per subject (entity, country, topic), 13 weeks:
+# current week + 12-week baseline. Never article counts.
+[signals]
+weeks = 13
+min_history_weeks = 8             # below this: insufficient history, no statistical signal
+min_support = 3                   # minimum events in the current week
+acceleration_z = 2.5
+acceleration_growth = 0.5         # +50 % over baseline mean
+surge_max_baseline = 0.5          # "appearance": baseline mean below this …
+surge_min_current = 3             # … and at least this many events now
+drop_min_baseline = 2.5           # "disappearance": baseline mean at least this …
+drop_max_ratio = 0.2              # … and current ≤ 20 % of it
+drop_max_p = 0.05                 # Poisson P(X ≤ current) under the baseline mean
+coverage_share = 0.30             # caveat when sources new to the window carry > 30 % of the evidence
+new_entity_min_events = 1
+new_entity_min_origins = 2       # a first appearance must be reported by ≥ 2 independent origins
+new_relation_min_events = 1
+
+[signals.confidence]
+per_z = 10                        # statistical strength, max 40
+z_max = 40
+per_event = 6                     # support, max 30
+support_max = 30
+per_origin = 3                    # corroboration, max 30
+per_family = 5
+corroboration_max = 30
+coverage_penalty = 15
+high = 70
+moderate = 45

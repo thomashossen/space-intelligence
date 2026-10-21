@@ -1,0 +1,25 @@
+{% macro icon(name, cls="") -%}
+<svg class="ic {{ cls }}" aria-hidden="true" focusable="false"><use href="/static/icons/site-sprite.svg#s-{{ name }}"/></svg>
+{%- endmacro %}
+
+{% macro event_row(e, compact=False) -%}
+<article class="ev{% if compact %} ev--compact{% endif %}">
+  {% set photo = img_for("ev-" ~ e.colour, e.id) %}
+  <div class="ev__art ev__art--{{ e.colour }}{% if photo %} ev__art--photo{% endif %}" aria-hidden="true">{% if photo %}<img src="{{ photo }}" alt="" loading="lazy" decoding="async">{% else %}{{ icon(e.icon) }}{% endif %}</div>
+  <div class="ev__body">
+    <p class="ev__meta">
+      <span class="tag tag--{{ e.colour }}">{{ e.type }}</span>
+      <time datetime="{{ e.datetime }}">{{ e.date }}</time>
+    </p>
+    <h3 class="ev__title"><a href="/evenements/{{ e.id }}">{{ e.title }}</a></h3>
+    {% if not compact %}<p class="ev__summary">{{ e.summary }}</p>{% endif %}
+    <p class="ev__foot">
+      <span class="proof proof--{{ e.status_key }}" title="{{ e.articles }} article(s), {{ e.origins }} origine(s) indépendante(s)">
+        {% if e.status_key == "confirmed" %}{{ icon("check") }}{% elif e.status_key == "contested" %}{{ icon("alert") }}{% endif %}
+        {{ e.status }}{% if e.origins > 1 %}, {{ e.origins }} origines{% endif %}
+      </span>
+      {% for t in e.tags %}<span class="chip">{{ t }}</span>{% endfor %}
+    </p>
+  </div>
+</article>
+{%- endmacro %}

@@ -1,0 +1,48 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon, event_row %}
+{% block title %}Actualités{% endblock %}
+{% block content %}
+<div class="page">
+  <header class="page__head">
+    <h1>{% if kind == "research" %}Recherche{% elif theme_label %}{{ theme_label }}{% else %}Actualités{% endif %}</h1>
+    <p>{{ total }} événement{{ "s" if total != 1 }}{% if q %} pour « {{ q }} »{% endif %}.
+      {% if q or scope or kind or theme %}<a href="/actualites">Effacer les filtres</a>{% endif %}</p>
+  </header>
+
+  <form class="filters" action="/actualites">
+    <label class="filters__q"><span class="sr-only">Rechercher</span>{{ icon("search") }}
+      <input name="q" type="search" value="{{ q }}" placeholder="Rechercher dans les titres et résumés"></label>
+    <fieldset class="seg"><legend class="sr-only">Secteur</legend>
+      {% for v, lab in scopes %}
+      <label><input type="radio" name="scope" value="{{ v }}" {% if scope == v %}checked{% endif %} onchange="this.form.submit()"><span>{{ lab }}</span></label>
+      {% endfor %}
+    </fieldset>
+    <label class="filters__sel"><span class="sr-only">Type d'événement</span>
+      <select name="type" onchange="this.form.submit()">
+        <option value="">Tous les types</option>
+        {% for v, lab in types %}<option value="{{ v }}" {% if kind == v %}selected{% endif %}>{{ lab }}</option>{% endfor %}
+      </select></label>
+    <label class="filters__sel"><span class="sr-only">Ordre</span>
+      <select name="sort" onchange="this.form.submit()">
+        <option value="recent" {% if sort != "importance" %}selected{% endif %}>Les plus récents</option>
+        <option value="importance" {% if sort == "importance" %}selected{% endif %}>Les plus importants</option>
+      </select></label>
+    {% if theme %}<input type="hidden" name="theme" value="{{ theme }}">{% endif %}
+    <button class="btn btn--solid" type="submit">Filtrer</button>
+  </form>
+
+  <section class="panel panel--list" aria-label="Événements">
+    {% for e in events %}{{ event_row(e) }}{% else %}
+    <p class="empty">Aucun événement ne correspond. Essayez un autre mot ou retirez un filtre.</p>
+    {% endfor %}
+  </section>
+
+  {% if pages > 1 %}
+  <nav class="pager" aria-label="Pagination">
+    {% if prev_url %}<a href="{{ prev_url }}">Page précédente</a>{% endif %}
+    <span>Page {{ page }} sur {{ pages }}</span>
+    {% if next_url %}<a href="{{ next_url }}">Page suivante</a>{% endif %}
+  </nav>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS publication and content. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>Kestrel Space Wire (fixture)</title>
+<link>https://kestrel-spacewire.example/</link>
+<description>Invented space trade publication. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>Ariane 6 launches two Galileo satellites</title>
+<link>https://www.kestrel-spacewire.example/2026/10/07/ariane-6-galileo-launch/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=launch</link>
+<guid isPermaLink="false">today-a6-kestrel</guid>
+<pubDate>Wed, 07 Oct 2026 00:10:00 +0200</pubDate>
+<dc:creator>Staff reporter</dc:creator>
+<description>Ariane 6 lifted off from Kourou on Tuesday evening and placed two Galileo satellites into orbit, the third Ariane 6 flight this year.</description>
+<content:encoded><![CDATA[<div class="ad-slot advert">Advertisement</div><p>Ariane 6 lifted off from Kourou on Tuesday evening and placed two Galileo satellites into orbit for the European Union's navigation system.</p><p>Arianespace confirmed separation of both spacecraft. ESA and the European Commission oversee the Galileo programme.</p><p>Read more: launch schedule</p><div class="social-share">Share on social</div>]]></content:encoded>
+</item>
+<item>
+<title>Ariane 6 launches two Galileo satellites</title>
+<link>http://kestrel-spacewire.example/2026/10/07/ariane-6-galileo-launch?utm_source=newsletter&amp;fbclid=IwAR0example</link>
+<guid isPermaLink="false">today-a6-kestrel-newsletter</guid>
+<pubDate>Wed, 07 Oct 2026 06:00:00 +0200</pubDate>
+<description>Ariane 6 lifted off from Kourou on Tuesday evening and placed two Galileo satellites into orbit, the third Ariane 6 flight this year.</description>
+</item>
+<item>
+<title>ESA picks Isar Aerospace for four Launcher Challenge missions</title>
+<link>https://kestrel-spacewire.example/2026/10/06/esa-isar-launcher-challenge</link>
+<guid isPermaLink="false">today-isar-kestrel</guid>
+<pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
+<dc:creator>Staff reporter</dc:creator>
+<description>ESA has chosen Isar Aerospace for 4 missions of the European Launcher Challenge, flying the Spectrum rocket from 2027.</description>
+<content:encoded><![CDATA[<p>ESA has chosen Isar Aerospace for 4 missions of the European Launcher Challenge, flying the Spectrum rocket from 2027.</p><p>The German launch company competes with other European launch startups for institutional missions.</p>]]></content:encoded>
+</item>
+<item>
+<title>MaiaSpace completes first hot-fire of its upper stage engine</title>
+<link>https://kestrel-spacewire.example/2026/10/06/maiaspace-hot-fire</link>
+<guid isPermaLink="false">today-maia-kestrel</guid>
+<pubDate>Tue, 06 Oct 2026 16:00:00 +0200</pubDate>
+<dc:creator>Staff reporter</dc:creator>
+<description>MaiaSpace, the ArianeGroup subsidiary developing a partly reusable launcher, completed the first hot-fire test of its upper stage engine.</description>
+<content:encoded><![CDATA[<p>MaiaSpace, the ArianeGroup subsidiary developing a partly reusable launcher, completed the first hot-fire test of its upper stage engine.</p><p>The test campaign continues ahead of a maiden flight.</p>]]></content:encoded>
+</item>
+</channel>
+</rss>

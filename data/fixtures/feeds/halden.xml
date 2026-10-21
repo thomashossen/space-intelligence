@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS publication and content. The first item contains mojibake on purpose (UTF-8 read as CP1252). -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Halden Industry Bulletin (fixture)</title>
+<link>https://halden-bulletin.example/</link>
+<description>Invented industry publication. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>Gallium squeeze: European radar makers flag supply risk after China tightens export licensing</title>
+<link>https://www.halden-bulletin.example/news/gallium-squeeze-radar-makers/</link>
+<guid isPermaLink="false">today-gallium-halden</guid>
+<pubDate>Tue, 06 Oct 2026 08:00:00 +0200</pubDate>
+<description>European radar makers say gallium export licensing in China is stretching lead times for gallium nitride power amplifiers.</description>
+<content:encoded><![CDATA[<p>European radar makers say gallium export licensing in China is stretching lead times for gallium nitride power amplifiers.</p><p>Itâ€™s a supply chain bottleneck for defence electronics, a buyer at a German supplier said. â€œWe have about eight weeks of inventory,â€ he added.</p><p>The Ministère des Armées and the DÃ©fense procurement teams are reviewing stockpiles, according to industry sources.</p>]]></content:encoded>
+</item>
+<item>
+<title>MaiaSpace hot-fire test marks milestone for reusable launcher</title>
+<link>https://halden-bulletin.example/news/maiaspace-hot-fire-milestone</link>
+<guid isPermaLink="false">today-maia-halden</guid>
+<pubDate>Tue, 06 Oct 2026 18:30:00 +0200</pubDate>
+<description>The upper stage engine of MaiaSpace's reusable launcher completed its first hot-fire test, a milestone for the ArianeGroup subsidiary.</description>
+<content:encoded><![CDATA[<p>The upper stage engine of MaiaSpace's reusable launcher completed its first hot-fire test, a milestone for the ArianeGroup subsidiary.</p><p>MaiaSpace targets a first flight later in the decade.</p>]]></content:encoded>
+</item>
+</channel>
+</rss>

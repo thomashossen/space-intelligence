@@ -1,0 +1,25 @@
+# GitHub disables scheduled workflows of a public repository after 60 days without activity.
+# Once a week, this records a tiny commit on a side branch (not main: no redeploy on Render).
+name: Maintien des collectes
+
+on:
+  schedule:
+    - cron: "17 5 * * 1"          # Mondays, 05:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B keepalive
+          date -u +%FT%TZ > .keepalive
+          git add .keepalive
+          git commit -m "Maintien des collectes programmées"
+          git push --force origin keepalive

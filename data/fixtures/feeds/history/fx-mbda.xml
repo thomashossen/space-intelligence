@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>MBDA newsroom — history (FICTITIOUS)</title>
+<link>https://www.mbda.example/</link>
+<description>Generated fixture history. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>Italian ministry funds Talon-X hypersonic interceptor study with MBDA</title>
+<link>https://www.mbda.example/2026/09/italian-ministry-funds-talon-x-hypersonic-interceptor-study-with-mbda-h0059</link>
+<guid isPermaLink="false">hist-h0059-0</guid>
+<pubDate>Fri, 04 Sep 2026 21:41:44 +0000</pubDate>
+<description>The Talon-X work focuses on propulsion for hypersonic flight above Mach 5.</description>
+<content:encoded><![CDATA[<nav class="site-nav"><a href="/">Home</a> | <a href="/news">News</a></nav><p>The Talon-X work focuses on propulsion for hypersonic flight above Mach 5.</p><p>MBDA said test results will feed a Italian decision expected in July 2027.</p><p>The study, reference HYP-695, runs for 29 months.</p><div class="share-buttons">Share this article</div>]]></content:encoded>
+</item>
+<item>
+<title>MBDA unveils Vesper hypersonic cruise missile concept</title>
+<link>https://www.mbda.example/2026/08/mbda-unveils-vesper-hypersonic-cruise-missile-concept-h0050</link>
+<guid isPermaLink="false">hist-h0050-0</guid>
+<pubDate>Wed, 05 Aug 2026 13:03:52 +0000</pubDate>
+<description>The Vesper work focuses on optical for hypersonic flight above Mach 5.</description>
+<content:encoded><![CDATA[<nav class="site-nav"><a href="/">Home</a> | <a href="/news">News</a></nav><p>The Vesper work focuses on optical for hypersonic flight above Mach 5.</p><p>MBDA said test results will feed a Polish decision expected in July 2027.</p><p>The study, reference HYP-411, runs for 14 months.</p><div class="share-buttons">Share this article</div>]]></content:encoded>
+</item>
+</channel>
+</rss>

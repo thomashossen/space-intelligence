@@ -1,0 +1,13 @@
+# Runtime
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29
+jinja2>=3.1
+tzdata>=2024.1          # time zones on systems without an IANA database (Windows)
+feedparser>=6.0         # RSS/Atom parsing in the collection pipeline
+httpx>=0.27             # live collection (python -m app.pipeline run --live); also used by the tests
+
+# Optional: French briefs offline (redaction provider = "local")
+#   pip install ctranslate2 sentencepiece
+
+# Tests
+pytest>=8.0

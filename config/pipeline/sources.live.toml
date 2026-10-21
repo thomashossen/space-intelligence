@@ -1,0 +1,341 @@
+# Live source registry used by `python -m app.pipeline run --live`.
+#
+# Free endpoints only, no key, no login. Respect each site's terms and rate limits
+# (min_interval_s). Never add LinkedIn, Facebook or X scraping here.
+#
+# Check every endpoint from your machine before relying on it:
+#   python -m app.pipeline check                    # HTTP status, entries parsed, newest date
+#   python -m app.pipeline check --disable-failing  # also sets enabled = false on failing sources
+#
+# max_items keeps only the N most recent entries per run, so a high-volume
+# aggregator (Google News, GDELT) cannot drown the specialised press.
+# Press titles below are real publications; their feed URLs follow the usual
+# WordPress / Arc conventions and must be confirmed with `check`.
+
+version = "live-2"
+
+# ---------------------------------------------------------------- institutions (tier 1)
+[[source]]
+id = "esa-news"
+name = "ESA — Space News"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "www.esa.int"
+country = "EU"
+institution = "European Space Agency"
+publisher_entity = "esa"
+language = "en"
+url = "https://www.esa.int/rssfeed/Our_Activities/Space_News"
+enabled = true
+
+[[source]]
+id = "nasa-releases"
+name = "NASA news releases"
+connector = "rss"
+source_type = "institutional"
+family = "INS"
+tier = 1
+domain = "www.nasa.gov"
+country = "US"
+institution = "NASA"
+publisher_entity = "nasa"
+language = "en"
+url = "https://www.nasa.gov/news-release/feed/"
+max_items = 40
+enabled = true
+
+# ---------------------------------------------------------------- specialised press, French (tier 2)
+[[source]]
+id = "opex360"
+name = "Zone Militaire (Opex360)"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "www.opex360.com"
+country = "FR"
+language = "fr"
+url = "https://www.opex360.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "meta-defense"
+name = "Meta-Defense"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "meta-defense.fr"
+country = "FR"
+language = "fr"
+url = "https://meta-defense.fr/feed/"
+max_items = 40
+enabled = false   # disabled by `check`
+
+[[source]]
+id = "fob"
+name = "FOB — Forces Operations Blog"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "www.forcesoperations.com"
+country = "FR"
+language = "fr"
+url = "https://www.forcesoperations.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "air-cosmos"
+name = "Air & Cosmos"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "air-cosmos.com"
+country = "FR"
+language = "fr"
+url = "https://air-cosmos.com/rss"
+max_items = 40
+enabled = false   # disabled by `check`
+
+# ---------------------------------------------------------------- specialised press, English (tier 2)
+[[source]]
+id = "spacenews"
+name = "SpaceNews"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "spacenews.com"
+country = "US"
+language = "en"
+url = "https://spacenews.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "european-spaceflight"
+name = "European Spaceflight"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "europeanspaceflight.com"
+country = "EU"
+language = "en"
+url = "https://europeanspaceflight.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "nasaspaceflight"
+name = "NASASpaceflight"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "www.nasaspaceflight.com"
+country = "US"
+language = "en"
+url = "https://www.nasaspaceflight.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "spacepolicyonline"
+name = "SpacePolicyOnline"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "spacepolicyonline.com"
+country = "US"
+language = "en"
+url = "https://spacepolicyonline.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "breaking-defense"
+name = "Breaking Defense"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "breakingdefense.com"
+country = "US"
+language = "en"
+url = "https://breakingdefense.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "defense-news"
+name = "Defense News"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "www.defensenews.com"
+country = "US"
+language = "en"
+url = "https://www.defensenews.com/arc/outboundfeeds/rss/?outputType=xml"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "defensescoop"
+name = "DefenseScoop"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "defensescoop.com"
+country = "US"
+language = "en"
+url = "https://defensescoop.com/feed/"
+max_items = 40
+enabled = true
+
+[[source]]
+id = "defense-post"
+name = "The Defense Post"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "thedefensepost.com"
+country = "US"
+language = "en"
+url = "https://thedefensepost.com/feed/"
+max_items = 40
+enabled = false   # disabled by `check`
+
+[[source]]
+id = "naval-news"
+name = "Naval News"
+connector = "rss"
+source_type = "press"
+family = "PRS"
+tier = 2
+domain = "www.navalnews.com"
+country = "FR"
+language = "en"
+url = "https://www.navalnews.com/feed/"
+max_items = 40
+enabled = true
+
+# ---------------------------------------------------------------- aggregators (tier 3, capped)
+[[source]]
+id = "gn-fr-spatial"
+name = "Google News FR — spatial"
+connector = "google_news"
+source_type = "aggregator"
+family = "AGG"
+tier = 3
+domain = "news.google.com"
+language = "fr"
+url = "https://news.google.com/rss/search?q=CNES%20OR%20%22Ariane%206%22%20OR%20lanceur%20OR%20satellite%20OR%20%22spatial%20militaire%22+when:3d&hl=fr&gl=FR&ceid=FR:fr"
+min_interval_s = 5
+max_items = 30
+enabled = true
+
+[[source]]
+id = "gn-fr-defense"
+name = "Google News FR — défense"
+connector = "google_news"
+source_type = "aggregator"
+family = "AGG"
+tier = 3
+domain = "news.google.com"
+language = "fr"
+url = "https://news.google.com/rss/search?q=DGA%20OR%20%22minist%C3%A8re%20des%20Arm%C3%A9es%22%20OR%20MBDA%20OR%20%22Naval%20Group%22%20OR%20Rafale+when:3d&hl=fr&gl=FR&ceid=FR:fr"
+min_interval_s = 5
+max_items = 30
+enabled = true
+
+[[source]]
+id = "gn-counter-uas"
+name = "Google News — counter-drone"
+connector = "google_news"
+source_type = "aggregator"
+family = "AGG"
+tier = 3
+domain = "news.google.com"
+language = "en"
+url = "https://news.google.com/rss/search?q=%22counter-drone%22%20OR%20%22counter-UAS%22+when:3d&hl=en-US&gl=US&ceid=US:en"
+min_interval_s = 5
+max_items = 30
+enabled = true
+
+[[source]]
+id = "gdelt-aero-defence"
+name = "GDELT DOC 2.0 — satellites, launchers, hypersonic, counter-drone"
+connector = "gdelt"
+source_type = "aggregator"
+family = "AGG"
+tier = 3
+domain = "api.gdeltproject.org"
+language = "en"
+url = "https://api.gdeltproject.org/api/v2/doc/doc?query=%28satellite%20OR%20%22launch%20vehicle%22%20OR%20hypersonic%20OR%20%22counter-drone%22%20OR%20%22fighter%20jet%22%29&mode=artlist&format=json&maxrecords=75&timespan=3d"
+min_interval_s = 6
+max_items = 30
+enabled = true
+
+# ---------------------------------------------------------------- research (tier 2)
+[[source]]
+id = "arxiv-space-systems"
+name = "arXiv — systèmes spatiaux"
+connector = "arxiv"
+source_type = "research"
+family = "RES"
+tier = 2
+domain = "export.arxiv.org"
+language = "en"
+url = "https://export.arxiv.org/api/query?search_query=(abs:satellite%20OR%20abs:spacecraft%20OR%20abs:%22launch%20vehicle%22)%20AND%20(cat:eess.SY%20OR%20cat:eess.SP%20OR%20cat:astro-ph.IM%20OR%20cat:physics.space-ph)&sortBy=submittedDate&sortOrder=descending&max_results=40"
+min_interval_s = 3
+enabled = true
+
+[[source]]
+id = "arxiv-guidance"
+name = "arXiv — counter-UAS, hypersonique, guidage"
+connector = "arxiv"
+source_type = "research"
+family = "RES"
+tier = 2
+domain = "export.arxiv.org"
+language = "en"
+url = "https://export.arxiv.org/api/query?search_query=abs:%22counter-UAS%22%20OR%20abs:hypersonic%20OR%20abs:%22missile%20guidance%22%20OR%20abs:%22radar%20target%22&sortBy=submittedDate&sortOrder=descending&max_results=40"
+min_interval_s = 3
+enabled = true
+
+[[source]]
+id = "hal-spatial-defense"
+name = "HAL — spatial et défense"
+connector = "hal"
+source_type = "research"
+family = "RES"
+tier = 2
+domain = "api.archives-ouvertes.fr"
+country = "FR"
+language = "fr"
+url = "https://api.archives-ouvertes.fr/search/?q=%28spatial%20OR%20satellite%20OR%20lanceur%20OR%20%22d%C3%A9fense%22%29&fq=submittedDate_tdate%3A%5BNOW-90DAYS/DAY%20TO%20NOW%5D&wt=json&rows=40&sort=submittedDate_tdate%20desc&fl=halId_s,title_s,abstract_s,uri_s,producedDate_tdate,submittedDate_tdate,authFullName_s,language_s"
+enabled = true
+
+# ---------------------------------------------------------------- video (template)
+[[source]]
+id = "yt-channel-template"
+name = "YouTube channel feed (template)"
+connector = "youtube"
+source_type = "video"
+family = "VID"
+tier = 1
+domain = "www.youtube.com"
+language = "en"
+url = "https://www.youtube.com/feeds/videos.xml?channel_id=REPLACE_WITH_CHANNEL_ID"
+enabled = false

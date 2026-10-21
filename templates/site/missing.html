@@ -1,0 +1,16 @@
+{% extends "site/base.html" %}
+{% block title %}Aucune donnée{% endblock %}
+{% block content %}
+<div class="page page--narrow">
+  <header class="page__head">
+    <h1>Aucune donnée collectée</h1>
+    {% if refresh_allowed %}
+    <p>Le site n'a encore rien collecté. Cliquez sur « Actualiser », en haut de la page, pour lancer la première collecte : elle prend une à deux minutes, puis les fiches en français sont rédigées.</p>
+    {% else %}
+    <p>Le site n'a pas trouvé de base à l'emplacement <code>{{ db }}</code>. Lancez une première collecte depuis le dossier du projet :</p>
+    {% endif %}
+  </header>
+  {% if not refresh_allowed %}<pre class="code">python -m app.pipeline run --live</pre>
+  <p>Rechargez ensuite cette page.</p>{% endif %}
+</div>
+{% endblock %}

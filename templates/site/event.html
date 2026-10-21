@@ -1,0 +1,125 @@
+{% extends "site/base.html" %}
+{% from "site/_macros.html" import icon %}
+{% block title %}{{ e.title }}{% endblock %}
+{% block content %}
+<div class="page page--event">
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/actualites">Actualités</a><span aria-hidden="true">/</span><span>{{ e.type }}</span></nav>
+  <header class="event-head">
+    {% set photo = img_for("ev-" ~ e.colour, e.id) %}
+    <div class="ev__art ev__art--{{ e.colour }} ev__art--lg{% if photo %} ev__art--photo{% endif %}" aria-hidden="true">{% if photo %}<img src="{{ photo }}" alt="">{% else %}{{ icon(e.icon) }}{% endif %}</div>
+    <div>
+      <p class="ev__meta"><span class="tag tag--{{ e.colour }}">{{ e.type }}</span><time datetime="{{ e.datetime }}">{{ event_date }}</time>
+        <span class="proof proof--{{ e.status_key }}">{{ e.status }}{% if e.origins > 1 %}, {{ e.origins }} origines{% endif %}</span></p>
+      <h1>{{ e.title }}</h1>
+      {% if brief and e.original_title != e.title %}<p class="event-orig">Titre d'origine : {{ e.original_title }}</p>{% endif %}
+    </div>
+  </header>
+
+  <div class="event-grid">
+    <div class="event-main">
+      {% if brief %}
+      <section class="panel brief" aria-labelledby="sum-title">
+        <h2 id="sum-title">Résumé</h2>
+        <p class="brief__lead">{{ brief.resume }}</p>
+        {% if brief.points_cles %}
+        <h3>Les faits</h3>
+        <ul class="brief__list">{% for x in brief.points_cles %}<li>{{ x }}</li>{% endfor %}</ul>
+        {% endif %}
+        {% if brief.method == "extractive" %}
+        <p class="brief__credit">{{ icon("contract") }}<span>Phrases extraites des {{ brief.origins }} source{{ "s" if brief.origins > 1 }} ci-dessous{% if brief.article_pages %} ({{ brief.article_pages }} article{{ "s" if brief.article_pages > 1 }} lu{{ "s" if brief.article_pages > 1 }} en entier){% endif %}{% if brief.translated %}, traduites automatiquement de l'anglais{% endif %}. Rien n'est ajouté à ce que disent les articles.</span></p>
+        {% endif %}
+        {% if brief.sources_limitees %}
+        <p class="brief__warn">{{ icon("alert") }}<span>Les sources ne donnent que peu de détails : ce résumé reste prudent.</span></p>
+        {% endif %}
+      </section>
+
+      {% if brief.enjeux %}
+      <section class="panel brief" aria-labelledby="stakes-title">
+        <h2 id="stakes-title">Les enjeux</h2>
+        <ul class="stakes">
+          {% for s in brief.enjeux %}
+          <li>{% if s.label %}<b>{{ s.label }}</b>{% endif %}<span>{{ s.text }}</span></li>
+          {% endfor %}
+        </ul>
+        {% if brief.contexte %}<h3>Contexte</h3>
+        <p>{{ brief.contexte }}</p>{% endif %}
+        {% if brief.a_surveiller %}
+        <h3>À surveiller</h3>
+        <ul class="brief__list brief__list--watch">{% for x in brief.a_surveiller %}<li>{{ x }}</li>{% endfor %}</ul>
+        {% endif %}
+        <p class="brief__credit">{{ icon("contract") }}<span>Fiche rédigée automatiquement par {{ brief.model }} le {{ brief.date }}, à partir des {{ brief.origins }} source{{ "s" if brief.origins > 1 }} ci-dessous{% if brief.article_pages %} ({{ brief.article_pages }} article{{ "s" if brief.article_pages > 1 }} lu{{ "s" if brief.article_pages > 1 }} en entier){% endif %}. Les faits sont tirés des sources ; le contexte peut mobiliser des connaissances générales. Vérifiez les points importants dans les articles.</span></p>
+      </section>
+      {% endif %}
+      {% else %}
+      <section class="panel brief" aria-labelledby="sum-title">
+        <h2 id="sum-title">Ce que disent les sources</h2>
+        <p class="brief__lead">{{ description }}</p>
+        <p class="brief__note">{{ icon("clock") }}<span>Pas encore de fiche en français pour cet événement. Cliquez sur « Actualiser » : toutes les fiches manquantes sont rédigées.</span></p>
+      </section>
+      {% endif %}
+      {% if reading %}
+      <section class="panel brief" aria-labelledby="why-title">
+        <h2 id="why-title">Pourquoi ça compte</h2>
+        <ul class="stakes">
+          {% for r in reading %}<li><b>{{ r.label }}{% if r.value %} <small>{{ r.value|int }}/100</small>{% endif %}</b><span>{{ r.text }}</span></li>{% endfor %}
+        </ul>
+        <p class="brief__credit">{{ icon("target") }}<span>Lecture automatique des scores calculés par le pipeline, sans modèle de langue.</span></p>
+      </section>
+      {% endif %}
+
+      <section class="panel" aria-labelledby="src-title">
+        <h2 id="src-title">Sources ({{ sources|length }})</h2>
+        <p class="status-line status-line--{{ e.status_key }}">{{ icon("check" if e.status_key == "confirmed" else ("alert" if e.status_key == "contested" else "clock")) }}<span><b>{{ e.status }}.</b> {{ status_text }}</span></p>
+        <ul class="sources">
+          {% for s in sources %}
+          <li>
+            <a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.title }}{{ icon("external", "ic--sm") }}</a>
+            <p>{{ s.source }}{% if s.publisher and s.publisher != s.source %} via {{ s.publisher }}{% endif %}, {{ s.date }}
+              {% if s.primary %}<span class="chip chip--primary">Source primaire</span>{% endif %}
+              {% if s.copies %}<span class="chip">+ {{ s.copies }} reprise{{ "s" if s.copies > 1 }}</span>{% endif %}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+    </div>
+    <aside>
+      <section class="panel" aria-labelledby="score-title">
+        <h2 id="score-title">Les scores</h2>
+        <p class="scores__intro">Chaque note va de 0 à 100. Dépliez-la pour voir d'où elle vient.</p>
+        <div class="scores">
+          {% for s in scores %}
+          <details class="score score--{{ s.mood }}"{% if loop.first %} open{% endif %}>
+            <summary>
+              <span class="score__name">{{ s.name }}</span>
+              <span class="score__value"><b>{{ s.value }}</b><small>/100 · {{ s.level }}</small></span>
+              <span class="meter" aria-hidden="true"><span style="width: {{ s.value }}%"></span></span>
+              <svg class="score__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="score__body">
+              <p class="score__what">{{ s.what }}</p>
+              <ul class="score__rows">
+                {% for r in s.rows %}
+                <li>
+                  <p><b>{{ r.label }}</b><span class="score__pts">{{ r.points }}</span></p>
+                  <p class="score__txt">{{ r.text }}</p>
+                  {% if r.detail %}<p class="score__calc">{{ r.detail }}</p>{% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+              {% if s.foot %}<p class="score__foot">{{ s.foot }}</p>{% endif %}
+            </div>
+          </details>
+          {% endfor %}
+        </div>
+      </section>
+      {% if actors or topics %}
+      <section class="panel" aria-labelledby="who-title">
+        <h2 id="who-title">Acteurs et thèmes</h2>
+        <p class="chips">{% for a in actors %}<a class="chip chip--link" href="/acteurs/{{ a.id }}">{{ a.name }}</a>{% endfor %}</p>
+        <p class="chips">{% for t in topics %}<span class="chip">{{ t }}</span>{% endfor %}{% for c in countries %}<span class="chip chip--soft">{{ c }}</span>{% endfor %}</p>
+      </section>
+      {% endif %}
+    </aside>
+  </div>
+</div>
+{% endblock %}

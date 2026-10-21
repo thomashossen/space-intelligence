@@ -1,0 +1,8 @@
+Images du site (facultatives). Sans image, le site garde ses dégradés et ses icônes.
+
+  python -m app.images list                     emplacements, présentes ou manquantes
+  python -m app.images prompts > prompts.md     une consigne de génération par emplacement
+  python -m app.images import ~/Downloads/gen   redimensionne et convertit les fichiers
+                                                nommés comme les emplacements (pip install pillow)
+
+Variantes : ev-launch.png, ev-launch-2.png… (4 au plus) ; chaque événement garde toujours la même.

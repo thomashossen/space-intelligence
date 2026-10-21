@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Data written at run time (on Render: the persistent disk)
+data/pipeline/
+data/models/
+
+# macOS
+.DS_Store
+__MACOSX/

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS CONTENT. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Arianespace press releases (fixture)</title>
+<link>https://www.arianespace.example/</link>
+<description>Fixture feed. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>Ariane 6 successfully launches two Galileo satellites for the European Commission and ESA</title>
+<link>http://www.arianespace.example/press-release/ariane-6-galileo-l15/</link>
+<guid isPermaLink="false">today-a6-arianespace</guid>
+<pubDate>Tue, 06 Oct 2026 23:05:00 +0200</pubDate>
+<description>Arianespace has successfully launched two Galileo navigation satellites on Ariane 6 from Europe's Spaceport.</description>
+<content:encoded><![CDATA[<p>Arianespace has successfully launched two Galileo navigation satellites on Ariane 6 from Europe's Spaceport in French Guiana, on behalf of the European Commission and ESA.</p><p>Lift-off took place at 22:41 local time. The satellites separated from the upper stage after a flight of nearly four hours.</p><p>It was the second Ariane 6 flight dedicated to the Galileo programme.</p>]]></content:encoded>
+</item>
+<item>
+<title>Arianespace books Vega C launch for a Copernicus Sentinel mission</title>
+<link>https://www.arianespace.example/press-release/vega-c-copernicus-sentinel/</link>
+<guid isPermaLink="false">today-vegac</guid>
+<pubDate>next Tuesday, early morning</pubDate>
+<description>Arianespace and ESA signed a launch contract for a Copernicus Sentinel satellite on Vega C.</description>
+<content:encoded><![CDATA[<p>Arianespace and ESA signed a launch contract for a Copernicus Sentinel satellite on Vega C, the launch company said.</p><p>The launch is planned from Europe's Spaceport. The satellite is built for the Copernicus Earth observation programme of the European Union.</p>]]></content:encoded>
+</item>
+</channel>
+</rss>

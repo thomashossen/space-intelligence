@@ -1,0 +1,7 @@
+{
+ "_fixture_notice": "Shaped like a HAL search API response. FICTITIOUS records; host uses .example.",
+ "response": {"numFound": 2, "start": 0, "docs": [
+  {"halId_s": "hal-09990001", "title_s": ["Propulseur à effet Hall pour petits satellites : résultats d'une campagne d'essais"], "abstract_s": ["Nous présentons les résultats d'une campagne d'essais d'un propulseur à effet Hall de faible puissance destiné aux petits satellites. La propulsion électrique permet des manœuvres en orbite basse avec une consommation réduite. Les mesures de poussée sont comparées à un modèle numérique."], "uri_s": "https://hal.example/hal-09990001", "producedDate_tdate": "2026-10-05T00:00:00Z", "authFullName_s": ["Jeanne Exemple", "Paul Modèle"], "language_s": ["fr"]},
+  {"halId_s": "hal-09990002", "title_s": ["Analyse des chaînes d'approvisionnement en terres rares pour l'aéronautique européenne"], "abstract_s": ["Cette étude analyse les dépendances de l'industrie aéronautique européenne aux terres rares et au titane, et les risques de pénurie dans la chaîne d'approvisionnement des moteurs d'avion."], "uri_s": "https://hal.example/hal-09990002", "producedDate_tdate": "2026-13-45", "authFullName_s": ["Claire Exemple"], "language_s": ["fr"]}
+ ]}
+}

@@ -1,0 +1,62 @@
+# Collection, analysis and French briefs on GitHub Actions (free in a public repository).
+# Runs every 15 minutes and when someone presses "Actualiser" on the site (workflow_dispatch).
+# The database is kept between runs as a release asset: release "data", file live.sqlite.gz.
+name: Collecte
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"        # best effort: GitHub may start it a few minutes late
+  workflow_dispatch:
+
+permissions:
+  contents: write                 # publish the database in the "data" release
+
+concurrency:
+  group: collecte                 # one run at a time; a new request waits for the current one
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      SECTOR_INTEL_DATA_DIR: ${{ github.workspace }}/var
+      SECTOR_INTEL_REDACTION_PROVIDER: local
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Modèle de traduction en cache
+        uses: actions/cache@v4
+        with:
+          path: var/models
+          key: argos-translate-en_fr-1_9
+
+      - name: Préparation
+        run: |
+          pip install -r requirements.txt ctranslate2 sentencepiece
+          python -m app.pipeline translator install --if-missing
+          mkdir -p var/pipeline
+          if gh release download data --pattern live.sqlite.gz --dir var/pipeline --clobber; then
+            gunzip -f var/pipeline/live.sqlite.gz
+          else
+            echo "Pas encore de base publiée : première collecte."
+          fi
+
+      - name: Collecte et analyse
+        run: python -m app.pipeline run --live
+
+      - name: Rédaction des fiches
+        continue-on-error: true    # without briefs the new events are still published
+        run: python -m app.pipeline redact --all
+
+      - name: Publication
+        run: |
+          python -m app.sync export var/pipeline/live.sqlite live.sqlite.gz
+          gh release view data > /dev/null 2>&1 || gh release create data --title "Données" --notes "Base publiée automatiquement par la collecte." --latest=false
+          gh release upload data live.sqlite.gz --clobber

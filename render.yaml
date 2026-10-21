@@ -1,0 +1,32 @@
+# Render Blueprint, free plan: the site only reads. GitHub Actions (.github/workflows/collecte.yml)
+# collects every 15 minutes and publishes the database; this service downloads it at start-up and
+# every 5 minutes. A Free instance sleeps after 15 minutes without visits and loses its files:
+# not a problem here, the next start downloads the database again (about one minute to wake up).
+# Render → New → Blueprint → pick this repository; it asks for the two values marked sync: false.
+services:
+  - type: web
+    name: space-intelligence
+    runtime: python
+    plan: free
+    region: frankfurt
+    branch: main
+    autoDeployTrigger: commit
+    buildCommand: pip install -r requirements.txt
+    # No --proxy-headers: a visitor could forge X-Forwarded-For and pass for the host machine.
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: SECTOR_INTEL_SYNC              # download the database published by GitHub Actions
+        value: github
+      - key: SECTOR_INTEL_REFRESH_MODE      # "Actualiser" starts the GitHub workflow…
+        value: github
+      - key: SECTOR_INTEL_REFRESH           # …for anyone…
+        value: open
+      - key: SECTOR_INTEL_REFRESH_COOLDOWN  # …at most once every 15 minutes for the whole site
+        value: "900"
+      - key: SECTOR_INTEL_GITHUB_REPO       # owner/name, e.g. thomas/space-intelligence
+        sync: false
+      - key: SECTOR_INTEL_GITHUB_TOKEN      # fine-grained token: Actions read and write, Contents read
+        sync: false

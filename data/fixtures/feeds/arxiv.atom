@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — shaped like an arXiv API response. FICTITIOUS papers and authors; host uses .example. -->
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title type="html">ArXiv Query: counter-UAS (fixture)</title>
+  <id>http://arxiv.example/api/fixture</id>
+  <updated>2026-10-07T00:00:00-04:00</updated>
+  <opensearch:totalResults>2</opensearch:totalResults>
+  <entry>
+    <id>http://arxiv.example/abs/2610.04321v1</id>
+    <updated>2026-10-05T17:59:00Z</updated>
+    <published>2026-10-05T17:59:00Z</published>
+    <title>Reinforcement learning guidance for low-cost counter-UAS
+  interceptors</title>
+    <summary>  We propose a reinforcement learning guidance law for low-cost interceptors used in counter-UAS
+  defence against small drones. In simulation, the policy reduces miss distance against manoeuvring
+  targets compared with proportional navigation. We discuss limits for field use.
+</summary>
+    <author><name>J. Doe</name></author>
+    <author><name>R. Roe</name></author>
+    <link href="http://arxiv.example/abs/2610.04321v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.example/pdf/2610.04321v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.example/abs/2610.05555v1</id>
+    <updated>2026-10-06T12:00:00Z</updated>
+    <published>2026-10-06T12:00:00Z</published>
+    <title>Thermal modelling of hypersonic glide vehicle leading edges with ceramic matrix composites</title>
+    <summary>We present a thermal model of leading edges for hypersonic glide vehicles made of ceramic matrix composites, validated on arc-jet test data. The study supports material selection for interceptor and glide vehicle research.</summary>
+    <author><name>A. Example</name></author>
+    <link href="http://arxiv.example/abs/2610.05555v1" rel="alternate" type="text/html"/>
+    <arxiv:primary_category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — FICTITIOUS CONTENT. Deliberately malformed XML: unescaped ampersand and an unclosed tag. -->
+<rss version="2.0">
+<channel>
+<title>Thales press room (fixture)</title>
+<link>https://www.thales.example/</link>
+<description>Fixture feed with broken XML. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>Thales to supply Ground Master radars to Poland & reinforce the European Sky Shield Initiative</title>
+<link>https://www.thales.example/en/worldwide/defence/press-release/ground-master-poland</link>
+<guid isPermaLink="false">today-thales-gm</guid>
+<pubDate>Mon, 05 Oct 2026 09:30:00 +0200</pubDate>
+<description>Thales will supply Ground Master 400 air surveillance radars to the Polish Armed Forces, contributing to the European Sky Shield Initiative. Deliveries start in 2027.
+</item>
+<item>
+<title>Thales opens a satellite payload integration hall</title>
+<link>https://www.thales.example/en/worldwide/space/press-release/payload-hall</link>
+<guid isPermaLink="false">today-thales-hall</guid>
+<pubDate>Mon, 05 Oct 2026 15:00:00 +0200</pubDate>
+<description>Thales Alenia Space opened a new integration hall for telecommunications satellite payloads to increase production capacity.</description>
+</item>
+</channel>
+</rss>

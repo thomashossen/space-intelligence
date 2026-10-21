@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIXTURE — shaped like a YouTube channel feed. FICTITIOUS video; host uses .example. -->
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="https://www.youtube.example/feeds/videos.xml?channel_id=UCfixtureESA"/>
+ <id>yt:channel:UCfixtureESA</id>
+ <yt:channelId>UCfixtureESA</yt:channelId>
+ <title>European Space Agency, ESA (fixture)</title>
+ <author><name>European Space Agency, ESA</name><uri>https://www.youtube.example/channel/UCfixtureESA</uri></author>
+ <published>2009-01-01T00:00:00+00:00</published>
+ <entry>
+  <id>yt:video:fixture0001</id>
+  <yt:videoId>fixture0001</yt:videoId>
+  <yt:channelId>UCfixtureESA</yt:channelId>
+  <title>Replay: Ariane 6 launches two Galileo satellites</title>
+  <link rel="alternate" href="https://www.youtube.example/watch?v=fixture0001&amp;feature=youtu.be"/>
+  <author><name>European Space Agency, ESA</name><uri>https://www.youtube.example/channel/UCfixtureESA</uri></author>
+  <published>2026-10-06T21:50:00+00:00</published>
+  <updated>2026-10-06T22:10:00+00:00</updated>
+  <media:group>
+   <media:title>Replay: Ariane 6 launches two Galileo satellites</media:title>
+   <media:content url="https://www.youtube.example/v/fixture0001" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i.ytimg.example/vi/fixture0001/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Watch the replay of the Ariane 6 launch that placed two Galileo navigation satellites into orbit from Europe's Spaceport, with commentary from ESA.</media:description>
+  </media:group>
+ </entry>
+</feed>

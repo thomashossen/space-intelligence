@@ -1,0 +1,11 @@
+{
+ "_fixture_notice": "Shaped like a GDELT DOC 2.0 artlist response. FICTITIOUS articles; hosts use .example.",
+ "articles": [
+  {"url": "http://kestrel-spacewire.example/2026/10/07/ariane-6-galileo-launch?utm_source=gdelt&utm_medium=feed", "url_mobile": "", "title": "Ariane 6 launches two Galileo satellites", "seendate": "20261006T224500Z", "socialimage": "", "domain": "kestrel-spacewire.example", "language": "English", "sourcecountry": "United Kingdom"},
+  {"url": "https://m.halden-bulletin.example/news/gallium-squeeze-radar-makers/#comments", "url_mobile": "", "title": "Gallium squeeze: European radar makers flag supply risk after China tightens export licensing", "seendate": "20261006T063000Z", "socialimage": "", "domain": "halden-bulletin.example", "language": "English", "sourcecountry": "Germany"},
+  {"url": "https://orient-ledger.example/business/2026/10/05/gallium-export-licensing-tightened", "url_mobile": "", "title": "Beijing tightens gallium export licensing, European radar suppliers react", "seendate": "20261005T221500Z", "socialimage": "", "domain": "orient-ledger.example", "language": "English", "sourcecountry": "Singapore"},
+  {"url": "https://regional-daily.example/business/bakery-chain-opens-40th-store", "url_mobile": "", "title": "Regional bakery chain opens its 40th store", "seendate": "20261006T080000Z", "socialimage": "", "domain": "regional-daily.example", "language": "English", "sourcecountry": "United States"},
+  {"url": "https://portal-obronny.example/wiadomosci/wojsko-testuje-systemy", "url_mobile": "", "title": "Wojsko testuje nowe systemy antydronowe na poligonie", "seendate": "20261006T101500Z", "socialimage": "", "domain": "portal-obronny.example", "language": "Polish", "sourcecountry": "Poland"},
+  "not-an-object"
+ ]
+}

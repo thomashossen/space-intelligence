@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Google News — history (FICTITIOUS)</title>
+<link>https://news.google.example/</link>
+<description>Generated fixture history. Every item is invented.</description>
+<language>en</language>
+<item>
+<title>German radar makers report longer lead times for gallium nitride chips - Halden Industry Bulletin</title>
+<link>https://news.google.example/rss/articles/CBMi688307184758e631d877900e?oc=5</link>
+<guid isPermaLink="false">hist-h0165-2</guid>
+<pubDate>Mon, 05 Oct 2026 18:14:18 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi688307184758e631d877900e?oc=5"&gt;German radar makers report longer lead times for gallium nitride chips&lt;/a&gt;</description>
+<source url="https://halden-bulletin.example">Halden Industry Bulletin</source>
+</item>
+<item>
+<title>Diehl Defence delivers first Vigil anti-drone units to Dutch forces - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi4b97b885dac4f2080e3d2cdb?oc=5</link>
+<guid isPermaLink="false">hist-h0039-2</guid>
+<pubDate>Mon, 05 Oct 2026 00:13:42 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi4b97b885dac4f2080e3d2cdb?oc=5"&gt;Diehl Defence delivers first Vigil anti-drone units to Dutch forces&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Rocket Factory Augsburg completes 3-second engine test for RFA One - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMieb5ba2bfa1b8ddbea79ace47?oc=5</link>
+<guid isPermaLink="false">hist-h0119-1</guid>
+<pubDate>Sun, 04 Oct 2026 02:40:09 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMieb5ba2bfa1b8ddbea79ace47?oc=5"&gt;Rocket Factory Augsburg completes 3-second engine test for RFA One&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Neutron launch by Rocket Lab places 30 small satellites in orbit - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMi0ddf811693bd5d574b2b8c1c?oc=5</link>
+<guid isPermaLink="false">hist-h0118-1</guid>
+<pubDate>Fri, 02 Oct 2026 01:31:22 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi0ddf811693bd5d574b2b8c1c?oc=5"&gt;Neutron launch by Rocket Lab places 30 small satellites in orbit&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Quantum Systems wins Swedish order for 42 Arbalest counter-drone systems - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMife095e7f3c2ab5bdb8238f09?oc=5</link>
+<guid isPermaLink="false">hist-h0034-1</guid>
+<pubDate>Tue, 29 Sep 2026 12:06:47 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMife095e7f3c2ab5bdb8238f09?oc=5"&gt;Quantum Systems wins Swedish order for 42 Arbalest counter-drone systems&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>The Exploration Company sets August window for next Nyx flight - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMie8de12c9aad7cd1b5d83fb12?oc=5</link>
+<guid isPermaLink="false">hist-h0116-2</guid>
+<pubDate>Fri, 25 Sep 2026 21:47:38 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMie8de12c9aad7cd1b5d83fb12?oc=5"&gt;The Exploration Company sets August window for next Nyx flight&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Diehl Defence delivers first Brontes anti-drone units to Belgian forces - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMif1ccec4143b82fe4ca5db2be?oc=5</link>
+<guid isPermaLink="false">hist-h0033-1</guid>
+<pubDate>Wed, 23 Sep 2026 03:00:18 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMif1ccec4143b82fe4ca5db2be?oc=5"&gt;Diehl Defence delivers first Brontes anti-drone units to Belgian forces&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Quantum Systems delivers first Tessera anti-drone units to Finnish forces - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi1278a4b40248694ae82339e1?oc=5</link>
+<guid isPermaLink="false">hist-h0027-2</guid>
+<pubDate>Mon, 14 Sep 2026 06:22:50 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi1278a4b40248694ae82339e1?oc=5"&gt;Quantum Systems delivers first Tessera anti-drone units to Finnish forces&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Hensoldt tests Lumen counter-UAS interceptor against drone swarms in Sweden - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi956d0b2b461e463191f22923?oc=5</link>
+<guid isPermaLink="false">hist-h0029-2</guid>
+<pubDate>Mon, 14 Sep 2026 03:49:18 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi956d0b2b461e463191f22923?oc=5"&gt;Hensoldt tests Lumen counter-UAS interceptor against drone swarms in Sweden&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Helsing delivers first Corax anti-drone units to Danish forces - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMid3f15dc5ade1581d42512516?oc=5</link>
+<guid isPermaLink="false">hist-h0024-1</guid>
+<pubDate>Wed, 09 Sep 2026 06:22:28 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMid3f15dc5ade1581d42512516?oc=5"&gt;Helsing delivers first Corax anti-drone units to Danish forces&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Kongsberg tests Brontes counter-UAS interceptor against drone swarms in Poland - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi48921422955f1cf8902a6afe?oc=5</link>
+<guid isPermaLink="false">hist-h0021-2</guid>
+<pubDate>Fri, 28 Aug 2026 10:47:27 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi48921422955f1cf8902a6afe?oc=5"&gt;Kongsberg tests Brontes counter-UAS interceptor against drone swarms in Poland&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Finnish radar makers report longer lead times for gallium nitride chips - Halden Industry Bulletin</title>
+<link>https://news.google.example/rss/articles/CBMif0d30d0608d59859b415d1cb?oc=5</link>
+<guid isPermaLink="false">hist-h0163-2</guid>
+<pubDate>Sun, 23 Aug 2026 21:20:50 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMif0d30d0608d59859b415d1cb?oc=5"&gt;Finnish radar makers report longer lead times for gallium nitride chips&lt;/a&gt;</description>
+<source url="https://halden-bulletin.example">Halden Industry Bulletin</source>
+</item>
+<item>
+<title>Avio sets November window for next Vega C flight - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMi9ddddb8a3ffc86450a408502?oc=5</link>
+<guid isPermaLink="false">hist-h0090-1</guid>
+<pubDate>Wed, 19 Aug 2026 05:55:26 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi9ddddb8a3ffc86450a408502?oc=5"&gt;Avio sets November window for next Vega C flight&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Saab delivers first Corax anti-drone units to Danish forces - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi6f3673ecbd71068a90fa8e51?oc=5</link>
+<guid isPermaLink="false">hist-h0017-1</guid>
+<pubDate>Sun, 16 Aug 2026 15:22:55 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi6f3673ecbd71068a90fa8e51?oc=5"&gt;Saab delivers first Corax anti-drone units to Danish forces&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Leonardo tests Vigil counter-UAS interceptor against drone swarms in Italy - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi591f41aadbed36ac491b7d12?oc=5</link>
+<guid isPermaLink="false">hist-h0016-1</guid>
+<pubDate>Fri, 14 Aug 2026 14:23:47 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi591f41aadbed36ac491b7d12?oc=5"&gt;Leonardo tests Vigil counter-UAS interceptor against drone swarms in Italy&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>The Exploration Company expands Nyx production line in Finland - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMi3d381f4007dc2e75620c1b9c?oc=5</link>
+<guid isPermaLink="false">hist-h0093-1</guid>
+<pubDate>Fri, 14 Aug 2026 06:41:33 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi3d381f4007dc2e75620c1b9c?oc=5"&gt;The Exploration Company expands Nyx production line in Finland&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Hensoldt tests Skyranger counter-UAS interceptor against drone swarms in Poland - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMifae276efa1097cb7a7f3d25d?oc=5</link>
+<guid isPermaLink="false">hist-h0012-1</guid>
+<pubDate>Fri, 07 Aug 2026 14:20:09 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMifae276efa1097cb7a7f3d25d?oc=5"&gt;Hensoldt tests Skyranger counter-UAS interceptor against drone swarms in Poland&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Rocket Lab expands Neutron production line in Sweden - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMic7998ff825b5e6dd441b6f14?oc=5</link>
+<guid isPermaLink="false">hist-h0088-1</guid>
+<pubDate>Wed, 05 Aug 2026 15:40:40 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMic7998ff825b5e6dd441b6f14?oc=5"&gt;Rocket Lab expands Neutron production line in Sweden&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>RFA One launch by Rocket Factory Augsburg places 46 small satellites in orbit - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMi07f65e4cd07e08d64991f2aa?oc=5</link>
+<guid isPermaLink="false">hist-h0082-2</guid>
+<pubDate>Mon, 03 Aug 2026 18:33:18 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi07f65e4cd07e08d64991f2aa?oc=5"&gt;RFA One launch by Rocket Factory Augsburg places 46 small satellites in orbit&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Leonardo wins Belgian order for 7 Skyranger counter-drone systems - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMif98a86bdc5f5fc50c8602a72?oc=5</link>
+<guid isPermaLink="false">hist-h0011-1</guid>
+<pubDate>Fri, 31 Jul 2026 01:08:19 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMif98a86bdc5f5fc50c8602a72?oc=5"&gt;Leonardo wins Belgian order for 7 Skyranger counter-drone systems&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>ArianeGroup completes 19-second engine test for Ariane 6 - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMi80d71d7ab2abc2ce0bc57225?oc=5</link>
+<guid isPermaLink="false">hist-h0079-1</guid>
+<pubDate>Mon, 27 Jul 2026 06:47:56 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi80d71d7ab2abc2ce0bc57225?oc=5"&gt;ArianeGroup completes 19-second engine test for Ariane 6&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Quantum Systems delivers first Corax anti-drone units to Spanish forces - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi257324ba4d8150c24f4bd51c?oc=5</link>
+<guid isPermaLink="false">hist-h0007-2</guid>
+<pubDate>Wed, 22 Jul 2026 19:09:17 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi257324ba4d8150c24f4bd51c?oc=5"&gt;Quantum Systems delivers first Corax anti-drone units to Spanish forces&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Quantum Systems delivers first Harrier-C anti-drone units to Polish forces - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi5b863d2625b42acfe7a102ca?oc=5</link>
+<guid isPermaLink="false">hist-h0005-1</guid>
+<pubDate>Thu, 16 Jul 2026 21:49:34 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi5b863d2625b42acfe7a102ca?oc=5"&gt;Quantum Systems delivers first Harrier-C anti-drone units to Polish forces&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>Spectrum launch by Isar Aerospace places 46 small satellites in orbit - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMi6c8f2b98fdbe45d6b906575a?oc=5</link>
+<guid isPermaLink="false">hist-h0070-2</guid>
+<pubDate>Sat, 11 Jul 2026 03:07:25 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi6c8f2b98fdbe45d6b906575a?oc=5"&gt;Spectrum launch by Isar Aerospace places 46 small satellites in orbit&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+<item>
+<title>Saab wins Finnish order for 13 Corax counter-drone systems - Northline Defence Monitor</title>
+<link>https://news.google.example/rss/articles/CBMi8efc2e9fe978f30a55271db4?oc=5</link>
+<guid isPermaLink="false">hist-h0002-1</guid>
+<pubDate>Thu, 09 Jul 2026 02:13:00 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi8efc2e9fe978f30a55271db4?oc=5"&gt;Saab wins Finnish order for 13 Corax counter-drone systems&lt;/a&gt;</description>
+<source url="https://northline-defence.example">Northline Defence Monitor</source>
+</item>
+<item>
+<title>ArianeGroup expands Ariane 6 production line in Italy - Kestrel Space Wire</title>
+<link>https://news.google.example/rss/articles/CBMi4de14ae5ff1807b30ba5dbf3?oc=5</link>
+<guid isPermaLink="false">hist-h0073-1</guid>
+<pubDate>Wed, 08 Jul 2026 22:28:28 +0000</pubDate>
+<description>&lt;a href="https://news.google.example/rss/articles/CBMi4de14ae5ff1807b30ba5dbf3?oc=5"&gt;ArianeGroup expands Ariane 6 production line in Italy&lt;/a&gt;</description>
+<source url="https://kestrel-spacewire.example">Kestrel Space Wire</source>
+</item>
+</channel>
+</rss>
